@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Mde.Project.Mobile
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : FlyoutPage
     {
         public MainPage()
         {
