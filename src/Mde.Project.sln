@@ -17,6 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Imi.Project.Api.Core", "D:\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Imi.Project.Api.Infrastructure", "D:\VS Repos\PRI project\st-2021-2-S4A-imi-ee-pri-projectwerk-MattiasVermeersch\src\Imi.Project.Api.Infrastructure\Imi.Project.Api.Infrastructure.csproj", "{D2CC3A7D-DA27-4C17-9F91-1635F1424732}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pri", "Pri", "{26F486D2-DE24-4DAF-A705-55B05DB92774}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{22763B35-9713-43AD-A0F8-75C0D92D7C2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -251,6 +255,15 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4CC51649-1951-4FFF-81A9-EDFD94E1193B} = {22763B35-9713-43AD-A0F8-75C0D92D7C2F}
+		{2D4A1F6F-8A4F-4BBE-83EA-4ACFB85E97C1} = {22763B35-9713-43AD-A0F8-75C0D92D7C2F}
+		{D66A30B6-1B54-421A-854A-BF3371CFA7B9} = {22763B35-9713-43AD-A0F8-75C0D92D7C2F}
+		{E67068A7-067F-4015-94B2-B05C2CC1FAA0} = {22763B35-9713-43AD-A0F8-75C0D92D7C2F}
+		{A5AFDC4F-7D71-440C-9CDA-D3208656D18A} = {26F486D2-DE24-4DAF-A705-55B05DB92774}
+		{57FFD13C-3AC0-4564-A74E-E166C56EF9F7} = {26F486D2-DE24-4DAF-A705-55B05DB92774}
+		{D2CC3A7D-DA27-4C17-9F91-1635F1424732} = {26F486D2-DE24-4DAF-A705-55B05DB92774}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {722FD32F-CDB0-4112-B173-B2E8168DAA93}
