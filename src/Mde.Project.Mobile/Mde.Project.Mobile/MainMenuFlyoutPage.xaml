@@ -1,11 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Mde.Project.Mobile"
              x:Class="Mde.Project.Mobile.MainMenuFlyoutPage"
+             IconImageSource="images/emc_logo.jpg"
              Title="Main Menu">
     <ContentPage.Content>
         <StackLayout>
-            
+            <ListView x:Name="listView" x:FieldModifier="public">
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type local:FlyoutPageItem}">
+                        <local:FlyoutPageItem Title="Characters" IconSource="/Domain/images/emc_logo.jpg" TargetTypePage="{x:Type local:CharactersPage}"/>
+                        <local:FlyoutPageItem Title="Events" IconSource="" TargetTypePage="{x:Type local:EventsPage}"/>
+                        <local:FlyoutPageItem Title="Account" IconSource="" TargetTypePage="{x:Type local:AccountPage}"/>
+                    </x:Array>
+                </ListView.ItemsSource>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="5,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding IconSource}"/>
+                                <Label Grid.Column="1" Text="{Binding Title}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
