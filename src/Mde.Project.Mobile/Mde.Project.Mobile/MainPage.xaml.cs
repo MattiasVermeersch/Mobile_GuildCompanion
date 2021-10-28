@@ -13,6 +13,19 @@ namespace Mde.Project.Mobile
         public MainPage()
         {
             InitializeComponent();
+
+            mainMenu.listView.ItemSelected += ListView_ItemSelected;
+        }
+
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var item = e.SelectedItem as FlyoutPageItem;
+            if(item != null)
+            {
+                Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetTypePage));
+                mainMenu.listView.SelectedItem = null;
+                IsPresented = false;
+            }
         }
     }
 }
