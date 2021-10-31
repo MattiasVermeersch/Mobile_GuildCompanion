@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mde.Project.Mobile.Home.EventsHomePage"
+             Title="Upcoming events">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Image Source="emc_logo.jpg"
+                       Aspect="AspectFill"
+                       Opacity="0.2"/>
+                <StackLayout x:Name="homeLayout"
+                             Spacing="5">
+                    <Label Style="{StaticResource PageHeader}">PvE events</Label>
+                    <ListView x:Name="homePveEventsList"
+                              HeightRequest="250">
+
+                    </ListView>
+
+                    <Label Style="{StaticResource PageHeader}">PvP events</Label>
+                    <ListView x:Name="homePvpEventsList"
+                              HeightRequest="250">
+                        
+                    </ListView>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
