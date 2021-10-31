@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Mde.Project.Mobile
+namespace Mde.Project.Mobile.Events
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EventsPage : ContentPage
