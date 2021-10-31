@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mde.Project.Mobile.Account.AccountPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Image Source="" Aspect="AspectFill" Opacity="0.1"/>
+                <StackLayout Padding="20">
+                    <Label Style="{StaticResource PageHeader}">Account</Label>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
