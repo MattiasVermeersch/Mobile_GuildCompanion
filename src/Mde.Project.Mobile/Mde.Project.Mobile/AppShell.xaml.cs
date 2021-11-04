@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mde.Project.Mobile.Login;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,11 @@ namespace Mde.Project.Mobile
         public AppShell()
         {
             InitializeComponent();
+        }
+
+        private async void MenuItem_Clicked(object sender, EventArgs e)
+        {
+            await Current.GoToAsync($"//{nameof(LoginPage)}");
         }
     }
 }
