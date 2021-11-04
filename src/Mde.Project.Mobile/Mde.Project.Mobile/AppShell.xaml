@@ -1,38 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Shell xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:events="clr-namespace:Mde.Project.Mobile.Events"
-             xmlns:home="clr-namespace:Mde.Project.Mobile.Home"
-             xmlns:characters="clr-namespace:Mde.Project.Mobile.Characters"
-             xmlns:account="clr-namespace:Mde.Project.Mobile.Account"
-             x:Class="Mde.Project.Mobile.AppShell">
-
+<Shell  xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:login="clr-namespace:Mde.Project.Mobile.Login"
+        xmlns:events="clr-namespace:Mde.Project.Mobile.Events"
+        xmlns:home="clr-namespace:Mde.Project.Mobile.Home"
+        xmlns:characters="clr-namespace:Mde.Project.Mobile.Characters"
+        xmlns:account="clr-namespace:Mde.Project.Mobile.Account"
+        x:Class="Mde.Project.Mobile.AppShell">
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
             <Grid BackgroundColor="DarkSeaGreen" Padding="10">
                 <Label Text="Guild Companion"
-                       Style="{StaticResource LabelHeader}"
-                       Grid.Row="1"/>
+                           Style="{StaticResource LabelWhiteHeader}"
+                           Grid.Row="1"/>
                 <Label Text="Mattias Vermeersch"
-                       Style="{StaticResource LabelSubHeader}"
-                       Grid.Row="2"/>
+                           Style="{StaticResource LabelSubHeader}"
+                           Grid.Row="2"/>
             </Grid>
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
-
+    
     <FlyoutItem Title="Home" Icon="">
-        <ShellContent Title="Home" ContentTemplate="{DataTemplate home:EventsHomePage}"/>
+        <ShellContent ContentTemplate="{DataTemplate home:EventsHomePage}" Route="EventsHomePage"/>
     </FlyoutItem>
     
     <FlyoutItem Title="Events" Icon="">
-        <ShellContent Title="Events" ContentTemplate="{DataTemplate events:EventsPage}"/>
+        <ShellContent ContentTemplate="{DataTemplate events:EventsPage}" Route="EventsPage"/>
     </FlyoutItem>
 
     <FlyoutItem Title="Characters" Icon="">
-        <ShellContent Title="Characters" ContentTemplate="{DataTemplate characters:CharactersPage}"/>
+        <ShellContent ContentTemplate="{DataTemplate characters:CharactersPage}" Route="CharactersPage"/>
     </FlyoutItem>
     
     <FlyoutItem Title="Account" Icon="">
-        <ShellContent Title="Account" ContentTemplate="{DataTemplate account:AccountPage}"/>
+        <ShellContent ContentTemplate="{DataTemplate account:AccountPage}" Route="AccountPage"/>
     </FlyoutItem>
 </Shell>
