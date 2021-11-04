@@ -7,11 +7,15 @@
     <Application.Resources>
         <ResourceDictionary>
             <!--Here comes the styling for the whole app-->
-            <Style x:Key="LabelHeader" TargetType="Label">
-                <Setter Property="TextColor" Value="White"/>
+            <Style x:Key="LabelBaseHeader" TargetType="Label">
+                <Setter Property="TextColor" Value="DarkSlateGray"/>
                 <Setter Property="FontSize" Value="30"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="LabelWhiteHeader" TargetType="Label" BasedOn="{StaticResource LabelBaseHeader}">
+                <Setter Property="TextColor" Value="White"/>
             </Style>
 
             <Style x:Key="LabelSubHeader" TargetType="Label">
@@ -27,6 +31,20 @@
                 <Setter Property="FontSize" Value="Large"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="FormLayout" TargetType="StackLayout">
+                <Setter Property="Padding" Value="20"/>
+                <Setter Property="Spacing" Value="30"/>
+                <Setter Property="Orientation" Value="Vertical"/>
+                <Setter Property="BackgroundColor" Value="DarkSlateGray"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="ButtonBase" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Azure"/>
+                <Setter Property="TextColor" Value="DarkRed"/>
+                <Setter Property="CornerRadius" Value="50"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>
