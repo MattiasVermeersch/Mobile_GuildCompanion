@@ -39,4 +39,7 @@
     <FlyoutItem Title="Account" Icon="">
         <ShellContent ContentTemplate="{DataTemplate account:AccountPage}" Route="AccountPage"/>
     </FlyoutItem>
+    
+    <MenuItem Text="Logout" Clicked="MenuItem_Clicked"/>
+
 </Shell>
