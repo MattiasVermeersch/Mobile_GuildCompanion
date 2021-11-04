@@ -1,15 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mde.Project.Mobile.Events.EventsPage">
-    <ContentPage.Content>
-        <ScrollView>
-            <Grid>
-                <Image Source="" Aspect="AspectFill" Opacity="0.1"/>
-                <StackLayout Padding="20">
-                    <Label Style="{StaticResource PageHeader}">Events</Label>
-                </StackLayout>
-            </Grid>
-        </ScrollView>
-    </ContentPage.Content>
-</ContentPage>
+<Shell  xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        xmlns:events="clr-namespace:Mde.Project.Mobile.Events"    
+        x:Class="Mde.Project.Mobile.Events.EventsPage"
+        Title="Events">
+
+    <TabBar Shell.TabBarBackgroundColor="DarkSeaGreen"
+            Shell.TabBarTitleColor="White"
+            Shell.TabBarUnselectedColor="Gray">
+        <Tab Title="PvE" Icon="">
+            <ShellContent Title="Raids" ContentTemplate="{DataTemplate events:RaidsPage}"/>
+            <ShellContent Title="Dungeons" ContentTemplate="{DataTemplate events:DungeonsPage}"/>
+        </Tab>
+        <Tab Title="PvP" Icon="">
+            <ShellContent Title="Arenas" ContentTemplate="{DataTemplate events:ArenasPage}"/>
+            <ShellContent Title="Battlegrounds" ContentTemplate="{DataTemplate events:BattlegroundsPage}"/>
+        </Tab>
+    </TabBar>
+</Shell>

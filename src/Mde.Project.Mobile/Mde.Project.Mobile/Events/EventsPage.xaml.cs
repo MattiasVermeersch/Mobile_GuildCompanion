@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Mde.Project.Mobile.Events
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EventsPage : ContentPage
+    public partial class EventsPage : Shell
     {
         public EventsPage()
         {
