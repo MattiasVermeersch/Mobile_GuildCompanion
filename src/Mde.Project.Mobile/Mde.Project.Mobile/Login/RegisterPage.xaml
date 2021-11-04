@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mde.Project.Mobile.Login.RegisterPage"
+             Shell.FlyoutBehavior="Disabled"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout Style="{StaticResource FormLayout}">
+            <BoxView HeightRequest="10"/>
+            <Label Text="Register"
+                   Style="{StaticResource PageHeader}"
+                   TextColor="White"/>
+
+            <Label Text="Name"/>
+            <Entry x:Name="txtName"
+                   Keyboard="Text"
+                   Placeholder="Your name"/>
+
+            <Label Text="Email"/>
+            <Entry x:Name="txtEmail"
+                   Keyboard="Email"
+                   Placeholder="example@email.com"/>
+
+            <Label Text="Password"/>
+            <Entry x:Name="txtPassword"
+                   Keyboard="Text"
+                   IsPassword="True"
+                   Placeholder="Password"/>
+
+            <Label Text="Confirm password"/>
+            <Entry x:Name="txtConfirmPassword"
+                   Keyboard="Text"
+                   IsPassword="True"
+                   Placeholder="Confirm password"/>
+
+            <Grid>
+                <Button Grid.Column="0"
+                        x:Name="btnSubmit"
+                        Text="Submit"
+                        Style="{StaticResource ButtonBase}"
+                        Clicked="btnSubmit_Clicked"/>
+                <Button Grid.Column="1"
+                        x:Name="btnCancel"
+                        Text="Cancel"
+                        Style="{StaticResource ButtonBase}"
+                        Clicked="btnCancel_Clicked"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
