@@ -19,7 +19,11 @@
             </Grid>
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
-    
+
+    <ShellItem Route="LoginPage" FlyoutItemIsVisible="False">
+        <ShellContent ContentTemplate="{DataTemplate login:LoginPage}"/>
+    </ShellItem>
+
     <FlyoutItem Title="Home" Icon="">
         <ShellContent ContentTemplate="{DataTemplate home:EventsHomePage}" Route="EventsHomePage"/>
     </FlyoutItem>
