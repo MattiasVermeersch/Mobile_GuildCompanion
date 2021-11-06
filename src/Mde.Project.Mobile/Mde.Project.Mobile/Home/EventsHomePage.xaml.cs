@@ -15,21 +15,19 @@ namespace Mde.Project.Mobile.Home
     
     public partial class EventsHomePage : ContentPage
     {
-        private readonly EventsService eventsService;
+        private readonly EventsService _eventsService;
         
         public EventsHomePage()
         {
             InitializeComponent();
 
-            eventsService = new EventsService();
-
-            homePveEventsList.ItemsSource = eventsService.GetPveEvents();
-            homePvpEventsList.ItemsSource = eventsService.GetPvpEvents();
+            _eventsService = new EventsService();
         }
 
         protected override void OnAppearing()
         {
-            
+            homePveEventsList.ItemsSource = _eventsService.GetPveEvents();
+            homePvpEventsList.ItemsSource = _eventsService.GetPvpEvents();
         }
     }
 }
