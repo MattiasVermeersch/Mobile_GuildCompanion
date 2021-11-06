@@ -3,13 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mde.Project.Mobile.Account.AccountPage">
     <ContentPage.Content>
-        <ScrollView>
-            <Grid>
-                <Image Source="" Aspect="AspectFill" Opacity="0.1"/>
-                <StackLayout Padding="20">
-                    <Label Style="{StaticResource PageHeader}">Account</Label>
-                </StackLayout>
-            </Grid>
-        </ScrollView>
+        <!--<Image Source="" Aspect="AspectFill" Opacity="0.1"/>-->
+        <StackLayout Padding="20">
+            
+            <Label Style="{StaticResource PageHeader}">Account</Label>
+            <BoxView HeightRequest="10"/>
+            <Label x:Name="lblName" Text="Name" TextColor="Black"/>
+            <Entry x:Name="txtName" Keyboard="Text" TextColor="Black"/>
+
+            <Label x:Name="lblEmail" Text="Email" TextColor="Black"/>
+            <Entry x:Name="txtEmail" Keyboard="Email" TextColor="Black"/>
+
+            <Label x:Name="lblDiscordId" Text="Your Discord" TextColor="Black"/>
+            <Entry x:Name="txtDiscordId" Keyboard="Text" TextColor="Black"/>
+
+            <Button x:Name="btnEdit" Text="Edit info" Clicked="btnEdit_Clicked"/>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
