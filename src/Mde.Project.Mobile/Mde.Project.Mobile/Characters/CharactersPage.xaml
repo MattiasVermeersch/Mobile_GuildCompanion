@@ -8,6 +8,10 @@
                 <Image Source="" Aspect="AspectFill" Opacity="0.1"/>
                 <StackLayout Padding="20">
                     <Label Style="{StaticResource PageHeader}">Characters</Label>
+
+                    <ListView x:Name="charactersList">
+                        
+                    </ListView>
                 </StackLayout>
             </Grid>
         </ScrollView>
