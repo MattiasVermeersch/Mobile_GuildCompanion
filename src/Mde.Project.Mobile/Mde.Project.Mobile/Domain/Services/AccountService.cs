@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Mde.Project.Mobile.Domain.Services
 {
@@ -9,9 +10,9 @@ namespace Mde.Project.Mobile.Domain.Services
     {
         private DummyProfile dummyProfile = new DummyProfile();
 
-        public DummyProfile GetDummyProfile()
+        public async Task<DummyProfile> GetDummyProfile()
         {
-            return dummyProfile;
+            return await Task.FromResult(dummyProfile);
         }
     }
 }
