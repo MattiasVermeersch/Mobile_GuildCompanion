@@ -19,5 +19,10 @@ namespace Mde.Project.Mobile.Domain.Services
         {
             return await Task.FromResult(dummyProfile);
         }
+
+        public async Task SaveProfile(DummyProfile profile)
+        {
+            dummyProfile = await Task.FromResult(profile);
+        }
     }
 }
