@@ -3,6 +3,7 @@
 ## Project
 ### Inleiding
 Voor mobile development wil ik mijn WoW events API gebruiken van vorig jaar. Gebruikers kunnen events aanmaken zoals Arena matches en Dungeon runs. Er kunnen ook Raid runs en Battleground matches aangemaakt worden maar dit kan enkel door Raidleaders en Warlords respectievelijk. 
+Gebruikers kunenn ook up te date data inzien van hun characters die ze wensen toe te voegen via de WoW API.
 
 ### De app
 De eerste page is een Flyout Page waarin een oplijsting staat van opkomende events. Ik zou eventueel met een Tabbed Page werken zodat de gebruiker kan kiezen tussen PvE en PvP events. 
