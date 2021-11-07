@@ -8,16 +8,21 @@
             
             <Label Style="{StaticResource PageHeader}">Account</Label>
             <BoxView HeightRequest="10"/>
-            <Label x:Name="lblName" Text="Name" TextColor="Black"/>
+            <Label x:Name="lblNameTitle" Text="Name" TextColor="Black"/>
+            <Label x:Name="lblName" TextColor="Black" FontAttributes="Italic" IsVisible="False"/>
             <Entry x:Name="txtName" Keyboard="Text" TextColor="Black"/>
 
-            <Label x:Name="lblEmail" Text="Email" TextColor="Black"/>
+            <Label x:Name="lblEmailTitle" Text="Email" TextColor="Black"/>
+            <Label x:Name="lblEmail" TextColor="Black" FontAttributes="Italic" IsVisible="False"/>
             <Entry x:Name="txtEmail" Keyboard="Email" TextColor="Black"/>
 
-            <Label x:Name="lblDiscordId" Text="Your Discord" TextColor="Black"/>
+            <Label x:Name="lblDiscordTitle" Text="Your Discord" TextColor="Black"/>
+            <Label x:Name="lblDiscordId" TextColor="Black" FontAttributes="Italic" IsVisible="False"/>
             <Entry x:Name="txtDiscordId" Keyboard="Text" TextColor="Black"/>
 
-            <Button x:Name="btnEdit" Text="Edit info" Clicked="btnEdit_Clicked"/>
+            <Button x:Name="btnEdit" Text="Edit info" Clicked="btnEdit_Clicked" IsVisible="False"/>
+            <Button x:Name="btnSave" Text="Save" Clicked="btnSave_Clicked"/>
+            <Button x:Name="btnCancel" Text="Cancel" Clicked="btnCancel_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
