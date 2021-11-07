@@ -12,12 +12,5 @@ namespace Mde.Project.Mobile.Domain.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         public string DiscordID { get; set; }
-
-        public DummyProfile()
-        {
-            Name = "John Doe";
-            Email = "myEmail@mde.be";
-            DiscordID = "JohnDoe#1111";
-        }
     }
 }
