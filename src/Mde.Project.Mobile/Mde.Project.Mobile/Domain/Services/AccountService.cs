@@ -8,9 +8,14 @@ namespace Mde.Project.Mobile.Domain.Services
 {
     public class AccountService
     {
-        private DummyProfile dummyProfile = new DummyProfile();
+        private static DummyProfile dummyProfile = new DummyProfile
+        {
+            Name = "John Doe",
+            Email = "johnDoe@mail.com",
+            DiscordID = "JohnDiscord#3001"
+        };
 
-        public async Task<DummyProfile> GetDummyProfile()
+        public async Task<DummyProfile> GetProfile()
         {
             return await Task.FromResult(dummyProfile);
         }
