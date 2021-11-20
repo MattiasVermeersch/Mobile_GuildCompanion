@@ -42,7 +42,7 @@
     <EmbeddedResource Update="AppShell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Characters\CharactersPage.xaml">
+    <EmbeddedResource Update="Pages\Characters\CharactersPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Events\ArenasPage.xaml">
