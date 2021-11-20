@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Mde.Project.Mobile.Home
+namespace Mde.Project.Mobile.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
