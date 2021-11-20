@@ -71,6 +71,7 @@
 
   <ItemGroup>
     <Folder Include="Domain\Entities\" />
+    <Folder Include="Pages\" />
   </ItemGroup>
 
   <ItemGroup>
