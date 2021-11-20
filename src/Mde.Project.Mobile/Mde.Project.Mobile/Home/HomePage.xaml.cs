@@ -13,11 +13,11 @@ namespace Mde.Project.Mobile.Home
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
     
-    public partial class EventsHomePage : ContentPage
+    public partial class HomePage : ContentPage
     {
         private readonly EventsService _eventsService;
         
-        public EventsHomePage()
+        public HomePage()
         {
             InitializeComponent();
 
