@@ -1,5 +1,4 @@
-﻿using Mde.Project.Mobile.Home;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Mde.Project.Mobile.Login
+namespace Mde.Project.Mobile.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
@@ -25,7 +24,7 @@ namespace Mde.Project.Mobile.Login
 
         private async void btnLogin_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync($"//{nameof(EventsHomePage)}");
+            await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
         }
     }
 }
