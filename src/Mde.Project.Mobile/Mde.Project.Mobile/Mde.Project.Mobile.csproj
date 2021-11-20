@@ -33,7 +33,7 @@
     <Compile Update="AppShell.xaml.cs">
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Home\HomePage.xaml.cs">
+    <Compile Update="Pages\Home\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -60,7 +60,7 @@
     <EmbeddedResource Update="Events\RaidsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Home\HomePage.xaml">
+    <EmbeddedResource Update="Pages\Home\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Events\EventsPage.xaml">
