@@ -11,6 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Domain\Entities\**" />
+    <EmbeddedResource Remove="Domain\Entities\**" />
+    <None Remove="Domain\Entities\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Domain\images\emc_logo.jpg" />
   </ItemGroup>
 
@@ -54,6 +60,9 @@
     <EmbeddedResource Update="Pages\Events\BattlegroundsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Events\DetailEventPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\Events\DungeonsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -75,7 +84,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\Entities\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>
