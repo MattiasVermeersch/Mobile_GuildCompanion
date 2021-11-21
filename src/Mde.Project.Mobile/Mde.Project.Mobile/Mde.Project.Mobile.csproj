@@ -11,6 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Domain\Entities\**" />
+    <EmbeddedResource Remove="Domain\Entities\**" />
+    <None Remove="Domain\Entities\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Domain\images\emc_logo.jpg" />
   </ItemGroup>
 
@@ -33,47 +39,52 @@
     <Compile Update="AppShell.xaml.cs">
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\Home\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Account\AccountPage.xaml">
+    <EmbeddedResource Update="Pages\Account\AccountPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="AppShell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Characters\CharactersPage.xaml">
+    <EmbeddedResource Update="Pages\Characters\CharactersPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Events\ArenasPage.xaml">
+    <EmbeddedResource Update="Pages\Events\ArenasPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Events\BattlegroundsPage.xaml">
+    <EmbeddedResource Update="Pages\Events\BattlegroundsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Events\DungeonsPage.xaml">
+    <EmbeddedResource Update="Pages\Events\DetailEventPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Events\RaidsPage.xaml">
+    <EmbeddedResource Update="Pages\Events\DungeonsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Home\EventsHomePage.xaml">
+    <EmbeddedResource Update="Pages\Events\RaidsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Events\EventsPage.xaml">
+    <EmbeddedResource Update="Pages\Home\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Login\LoginPage.xaml">
+    <EmbeddedResource Update="Pages\Events\EventsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Login\RegisterPage.xaml">
+    <EmbeddedResource Update="Pages\Login\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Login\RegisterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\Entities\" />
-    <Folder Include="Pages\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
   <ItemGroup>

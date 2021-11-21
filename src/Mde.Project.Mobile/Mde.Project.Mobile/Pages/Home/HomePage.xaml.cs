@@ -8,22 +8,26 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Mde.Project.Mobile.Characters
+namespace Mde.Project.Mobile.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CharactersPage : ContentPage
+
+    
+    public partial class HomePage : ContentPage
     {
-        private readonly CharactersService _characterService;
-        public CharactersPage()
+        private readonly EventsService _eventsService;
+        
+        public HomePage()
         {
             InitializeComponent();
 
-            _characterService = new CharactersService();
+            _eventsService = new EventsService();
         }
 
         protected override void OnAppearing()
         {
-            charactersList.ItemsSource = _characterService.GetCharacters();
+            homePveEventsList.ItemsSource = _eventsService.GetPveEvents();
+            homePvpEventsList.ItemsSource = _eventsService.GetPvpEvents();
         }
     }
 }

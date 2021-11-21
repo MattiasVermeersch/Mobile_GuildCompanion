@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Mde.Project.Mobile.Events
+namespace Mde.Project.Mobile.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BattlegroundsPage : ContentPage
+    public partial class DungeonsPage : ContentPage
     {
-        public BattlegroundsPage()
+        public DungeonsPage()
         {
             InitializeComponent();
         }
