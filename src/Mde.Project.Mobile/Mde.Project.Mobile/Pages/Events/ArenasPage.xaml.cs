@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Mde.Project.Mobile.Events
+namespace Mde.Project.Mobile.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EventsPage : Shell
+    public partial class ArenasPage : ContentPage
     {
-        public EventsPage()
+        public ArenasPage()
         {
             InitializeComponent();
         }

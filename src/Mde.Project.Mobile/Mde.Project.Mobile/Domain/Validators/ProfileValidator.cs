@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Mde.Project.Mobile.Validators
+namespace Mde.Project.Mobile.Domain.Validators
 {
     public class ProfileValidator : AbstractValidator<DummyProfile>
     {

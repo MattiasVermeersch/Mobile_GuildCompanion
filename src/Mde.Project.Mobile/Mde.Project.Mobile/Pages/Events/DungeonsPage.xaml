@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mde.Project.Mobile.Events.ArenasPage">
+             x:Class="Mde.Project.Mobile.Pages.DungeonsPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Arenas!" 
-                Style="{StaticResource LabelBaseHeader}"/>
+            <Label Text="Welcome to Dungeons!"
+                   Style="{StaticResource LabelBaseHeader}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

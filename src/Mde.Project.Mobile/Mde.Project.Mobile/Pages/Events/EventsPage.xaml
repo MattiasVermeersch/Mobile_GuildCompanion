@@ -4,8 +4,8 @@
         xmlns:d="http://xamarin.com/schemas/2014/forms/design"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        xmlns:events="clr-namespace:Mde.Project.Mobile.Events"    
-        x:Class="Mde.Project.Mobile.Events.EventsPage"
+        xmlns:events="clr-namespace:Mde.Project.Mobile.Pages"    
+        x:Class="Mde.Project.Mobile.Pages.EventsPage"
         Title="Events">
 
     <TabBar Shell.TabBarBackgroundColor="DarkSeaGreen"
