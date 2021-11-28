@@ -57,7 +57,7 @@
                        TextDecorations="Underline"
                        Margin="-3,0,0,0">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding RegisterCommand, }"/>
+                        <TapGestureRecognizer Command="{Binding RegisterCommand}"/>
                     </Label.GestureRecognizers>
                 </Label>
             </Grid>
