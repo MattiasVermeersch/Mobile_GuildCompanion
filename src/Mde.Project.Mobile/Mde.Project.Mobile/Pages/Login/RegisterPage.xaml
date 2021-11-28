@@ -1,49 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodels="clr-namespace:Mde.Project.Mobile.ViewModels"
              x:Class="Mde.Project.Mobile.Pages.RegisterPage"
              Shell.FlyoutBehavior="Disabled"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             x:DataType="viewmodels:RegisterViewModel">
+
+    <ContentPage.BindingContext>
+        <viewmodels:RegisterViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
         <StackLayout Style="{StaticResource FormLayout}">
             <BoxView HeightRequest="10"/>
-            <Label Text="Register"
+            <Label Text="{Binding Title}"
                    Style="{StaticResource PageHeader}"
                    TextColor="White"/>
 
             <Label Text="Name"/>
-            <Entry x:Name="txtName"
+            <Entry Text="{Binding Name}"
                    Keyboard="Text"
                    Placeholder="Your name"/>
 
             <Label Text="Email"/>
-            <Entry x:Name="txtEmail"
+            <Entry Text="{Binding Email}"
                    Keyboard="Email"
                    Placeholder="example@email.com"/>
 
             <Label Text="Password"/>
-            <Entry x:Name="txtPassword"
+            <Entry Text="{Binding Password}"
                    Keyboard="Text"
                    IsPassword="True"
                    Placeholder="Password"/>
 
             <Label Text="Confirm password"/>
-            <Entry x:Name="txtConfirmPassword"
+            <Entry Text="{Binding ConfirmPassword}"
                    Keyboard="Text"
                    IsPassword="True"
                    Placeholder="Confirm password"/>
 
             <Grid>
                 <Button Grid.Column="0"
-                        x:Name="btnSubmit"
                         Text="Submit"
                         Style="{StaticResource ButtonBase}"
-                        Clicked="btnSubmit_Clicked"/>
+                        Command="{Binding SubmitCommand}"/>
                 <Button Grid.Column="1"
-                        x:Name="btnCancel"
                         Text="Cancel"
                         Style="{StaticResource ButtonBase}"
-                        Clicked="btnCancel_Clicked"/>
+                        Command="{Binding CancelCommand}"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
