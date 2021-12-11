@@ -1,12 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mde.Project.Mobile.Pages.RaidsPage">
+             xmlns:viewmodels="clr-namespace:Mde.Project.Mobile.ViewModels"
+             xmlns:models="clr-namespace:Mde.Project.Mobile.Domain.Models"
+             x:Class="Mde.Project.Mobile.Pages.RaidsPage"
+             x:DataType="viewmodels:RaidViewModel"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <viewmodels:RaidViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Raids!"
-                    Style="{StaticResource LabelBaseHeader}"
-                   TextColor="Black"/>
-        </StackLayout>
+        <ListView 
+            SelectedItem="{Binding SelectedRaid, Mode=TwoWay}"
+            HasUnevenRows="False"
+            RowHeight="45"
+            RefreshCommand="{Binding RefreshCommand}"
+            RefreshControlColor="Green"
+            IsPullToRefreshEnabled="True"
+            SeparatorColor="Green"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            ItemsSource="{Binding Raids}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:RaidModel">
+                    <ViewCell>
+                        <StackLayout
+                            Padding="10, 10"
+                            Orientation="Horizontal">
+                            <Label Text="{Binding Name}" 
+                                TextColor="Black"
+                                HorizontalOptions="StartAndExpand"/>
+                            <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy @ hh:mm}'}"
+                                TextColor="Black"
+                                HorizontalOptions="End"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

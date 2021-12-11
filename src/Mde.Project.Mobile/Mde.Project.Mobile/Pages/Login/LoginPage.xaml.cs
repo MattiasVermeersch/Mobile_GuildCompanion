@@ -16,15 +16,5 @@ namespace Mde.Project.Mobile.Pages
         {
             InitializeComponent();
         }
-
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new RegisterPage());
-        }
-
-        private async void btnLogin_Clicked(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
-        }
     }
 }

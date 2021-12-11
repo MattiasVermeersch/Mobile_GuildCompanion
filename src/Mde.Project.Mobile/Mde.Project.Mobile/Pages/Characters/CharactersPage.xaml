@@ -1,19 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mde.Project.Mobile.Pages.CharactersPage">
-    <ContentPage.Content>
-        <ScrollView>
-            <Grid>
-                <Image Source="" Aspect="AspectFill" Opacity="0.1"/>
-                <StackLayout Padding="20">
-                    <Label Style="{StaticResource PageHeader}">Characters</Label>
+             xmlns:viewmodels="clr-namespace:Mde.Project.Mobile.ViewModels"
+             xmlns:models="clr-namespace:Mde.Project.Mobile.Domain.Models"
+             x:Class="Mde.Project.Mobile.Pages.CharactersPage"
+             x:DataType="viewmodels:CharacterViewModel"
+             Title="{Binding Title}">
 
-                    <ListView x:Name="charactersList">
-                        
-                    </ListView>
-                </StackLayout>
-            </Grid>
-        </ScrollView>
+    <ContentPage.BindingContext>
+        <viewmodels:CharacterViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ListView 
+            SelectedItem="{Binding SelectedCharacter, Mode=TwoWay}"
+            HasUnevenRows="False"
+            RowHeight="45"
+            RefreshCommand="{Binding RefreshCommand}"
+            RefreshControlColor="Green"
+            IsPullToRefreshEnabled="True"
+            SeparatorColor="Green"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+            ItemsSource="{Binding Characters}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:CharacterModel">
+                    <ViewCell>
+                        <StackLayout
+                            Padding="10, 10"
+                            Orientation="Horizontal">
+                            <Label Text="{Binding Name}" 
+                                TextColor="Black"
+                                HorizontalOptions="StartAndExpand"/>
+                            <Label Text="{Binding Level}"
+                                TextColor="Black"
+                                HorizontalOptions="End"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

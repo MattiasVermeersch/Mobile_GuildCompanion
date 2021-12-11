@@ -1,11 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Shell  xmlns="http://xamarin.com/schemas/2014/forms"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-        xmlns:login="clr-namespace:Mde.Project.Mobile.Login"
-        xmlns:events="clr-namespace:Mde.Project.Mobile.Events"
-        xmlns:home="clr-namespace:Mde.Project.Mobile.Home"
-        xmlns:characters="clr-namespace:Mde.Project.Mobile.Characters"
-        xmlns:account="clr-namespace:Mde.Project.Mobile.Account"
+        xmlns:pages="clr-namespace:Mde.Project.Mobile.Pages"
         x:Class="Mde.Project.Mobile.AppShell">
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
@@ -21,23 +17,23 @@
     </Shell.FlyoutHeaderTemplate>
 
     <ShellItem Route="LoginPage" FlyoutItemIsVisible="False">
-        <ShellContent ContentTemplate="{DataTemplate login:LoginPage}"/>
+        <ShellContent ContentTemplate="{DataTemplate pages:LoginPage}"/>
     </ShellItem>
 
     <FlyoutItem Title="Home" Icon="">
-        <ShellContent ContentTemplate="{DataTemplate home:EventsHomePage}" Route="EventsHomePage"/>
+        <ShellContent ContentTemplate="{DataTemplate pages:HomePage}" Route="HomePage"/>
     </FlyoutItem>
     
     <FlyoutItem Title="Events" Icon="">
-        <ShellContent ContentTemplate="{DataTemplate events:EventsPage}" Route="EventsPage"/>
+        <ShellContent ContentTemplate="{DataTemplate pages:EventsPage}" Route="EventsPage"/>
     </FlyoutItem>
 
     <FlyoutItem Title="Characters" Icon="">
-        <ShellContent ContentTemplate="{DataTemplate characters:CharactersPage}" Route="CharactersPage"/>
+        <ShellContent ContentTemplate="{DataTemplate pages:CharactersPage}" Route="CharactersPage"/>
     </FlyoutItem>
     
     <FlyoutItem Title="Account" Icon="">
-        <ShellContent ContentTemplate="{DataTemplate account:AccountPage}" Route="AccountPage"/>
+        <ShellContent ContentTemplate="{DataTemplate pages:AccountPage}" Route="AccountPage"/>
     </FlyoutItem>
     
     <MenuItem Text="Logout" Clicked="MenuItem_Clicked"/>

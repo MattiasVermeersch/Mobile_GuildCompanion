@@ -1,9 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Mde.Project.Mobile.ViewModels"
              x:Class="Mde.Project.Mobile.Pages.LoginPage"
              Shell.FlyoutBehavior="Disabled"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             x:DataType="viewmodels:LoginViewModel">
+
+    <ContentPage.BindingContext>
+        <viewmodels:LoginViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
         <StackLayout Style="{StaticResource FormLayout}">
             <BoxView HeightRequest="10"/>
@@ -15,28 +22,25 @@
                 <Image Source="wow_icon.jpg" HeightRequest="100"/>
             </Frame>
 
-            <Label Text="Login"
+            <Label Text="{Binding Title}"
                    Style="{StaticResource LabelBaseHeader}"
                    TextColor="AntiqueWhite"
                    FontSize="50"/>
             
-            <Label x:Name="lblEmail"
-                Text="Email"/>
-            <Entry x:Name="txtEmail"
+            <Label Text="{Binding EmailTitle}"/>
+            <Entry Text="{Binding Email}"
                    Keyboard="Text"
                    Placeholder="example@email.com"/>
 
-            <Label x:Name="lblPassword"
-                Text="Password"/>
-            <Entry x:Name="txtPassword"
+            <Label Text="{Binding PasswordTitle}"/>
+            <Entry Text="{Binding Password}"
                    Keyboard="Text" 
                    IsPassword="True"
                    Placeholder="your password"/>
 
-            <Button x:Name="btnLogin"
-                    Text="Login"
+            <Button Text="Login"
                     Style="{StaticResource ButtonBase}"
-                    Clicked="btnLogin_Clicked"/>
+                    Command="{Binding LoginCommand}"/>
             
             <Grid HorizontalOptions="Center">
                 <Grid.ColumnDefinitions>
@@ -53,7 +57,7 @@
                        TextDecorations="Underline"
                        Margin="-3,0,0,0">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        <TapGestureRecognizer Command="{Binding RegisterCommand}"/>
                     </Label.GestureRecognizers>
                 </Label>
             </Grid>

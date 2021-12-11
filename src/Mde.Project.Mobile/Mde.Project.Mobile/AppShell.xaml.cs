@@ -16,6 +16,16 @@ namespace Mde.Project.Mobile
         public AppShell()
         {
             InitializeComponent();
+
+            #region Routing
+            Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+            Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
+            Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
+            Routing.RegisterRoute(nameof(EventsPage), typeof(EventsPage));
+            Routing.RegisterRoute(nameof(CharactersPage), typeof(CharactersPage));
+            Routing.RegisterRoute(nameof(AccountPage), typeof(AccountPage));
+            #endregion
+
         }
 
         private async void MenuItem_Clicked(object sender, EventArgs e)
