@@ -1,11 +1,6 @@
 ﻿using MvvmHelpers;
 using MvvmHelpers.Commands;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace Mde.Project.Mobile.ViewModels
 {
