@@ -3,6 +3,7 @@ using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Mde.Project.Mobile.ViewModels
@@ -11,18 +12,20 @@ namespace Mde.Project.Mobile.ViewModels
     {
         public LoginViewModel()
         {
+            //Defaults for props
             Title = "Login";
             EmailTitle = "Email";
             PasswordTitle = "Password";
 
-            LoginCommand = new Command(LoggingIn);
-            RegisterCommand = new Command(GoToRegister); 
+            //Commands
+            LoginCommand = new AsyncCommand(LoggingIn);
+            RegisterCommand = new AsyncCommand(GoToRegister); 
         }
 
         #region Properties
         public ICommand LoginCommand { get; }
         public ICommand RegisterCommand { get; }
-
+        
         public string EmailTitle { get; }
         public string PasswordTitle { get; }
 
@@ -42,7 +45,7 @@ namespace Mde.Project.Mobile.ViewModels
         #endregion
 
         #region Methods
-        async void LoggingIn()
+        async Task LoggingIn()
         {
             if (string.IsNullOrWhiteSpace(Email) || Email.ToLower() != "mvermeersch")
                 await App.Current.MainPage.DisplayAlert("Error", "Your credentials do not grant you access!", "OK");
@@ -51,7 +54,7 @@ namespace Mde.Project.Mobile.ViewModels
                 await AppShell.Current.GoToAsync($"//{nameof(HomePage)}");
         }
 
-        async void GoToRegister()
+        async Task GoToRegister()
         {
             await AppShell.Current.GoToAsync($"{nameof(RegisterPage)}");
         }
