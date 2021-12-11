@@ -17,11 +17,7 @@ namespace Mde.Project.Mobile.Pages
         public CharactersPage()
         {
             InitializeComponent();
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
+            
             (BindingContext as CharacterViewModel).RefreshCommand.ExecuteAsync();
         }
     }
