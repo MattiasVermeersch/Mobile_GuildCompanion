@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mde.Project.Mobile.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,8 @@ namespace Mde.Project.Mobile.Pages
         public DungeonsPage()
         {
             InitializeComponent();
+
+            (BindingContext as DungeonViewModel).RefreshCommand.ExecuteAsync();
         }
     }
 }
