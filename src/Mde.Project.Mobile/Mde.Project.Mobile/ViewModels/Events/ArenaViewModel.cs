@@ -12,9 +12,9 @@ namespace Mde.Project.Mobile.ViewModels
     {
         private readonly IEventService<ArenaModel> _arenaService;
 
-        public ArenaViewModel()
+        public ArenaViewModel(IEventService<ArenaModel> arenaService)
         {
-            _arenaService = DependencyService.Get<IEventService<ArenaModel>>();
+            _arenaService = arenaService;
             Title = "PvP";
         }
 
