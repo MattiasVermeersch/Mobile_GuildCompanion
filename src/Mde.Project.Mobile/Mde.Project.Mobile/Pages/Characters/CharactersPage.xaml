@@ -6,11 +6,11 @@
              x:Class="Mde.Project.Mobile.Pages.CharactersPage"
              x:DataType="viewmodels:CharacterViewModel"
              Title="{Binding Title}">
-    
+
     <ContentPage.BindingContext>
         <viewmodels:CharacterViewModel/>
     </ContentPage.BindingContext>
-    
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add"/>
     </ContentPage.ToolbarItems>
