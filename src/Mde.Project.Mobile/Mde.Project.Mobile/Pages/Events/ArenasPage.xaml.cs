@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Autofac;
+using Mde.Project.Mobile.IoC;
+using Mde.Project.Mobile.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +18,8 @@ namespace Mde.Project.Mobile.Pages
         public ArenasPage()
         {
             InitializeComponent();
+
+            (BindingContext as ArenaViewModel).RefreshCommand.ExecuteAsync();
         }
     }
 }
