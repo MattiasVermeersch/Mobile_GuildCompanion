@@ -3,6 +3,7 @@ using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Mde.Project.Mobile.ViewModels
@@ -14,8 +15,8 @@ namespace Mde.Project.Mobile.ViewModels
             Title = "Register here";
 
             //Commands
-            SubmitCommand = new Command(SubmitRegistration);
-            CancelCommand = new Command(CancelRegistration);
+            SubmitCommand = new AsyncCommand(SubmitRegistration);
+            CancelCommand = new AsyncCommand(CancelRegistration);
         }
 
         #region Properties
@@ -59,12 +60,12 @@ namespace Mde.Project.Mobile.ViewModels
         #endregion
 
         #region Methods
-        async void CancelRegistration()
+        async Task CancelRegistration()
         {
             await AppShell.Current.GoToAsync($"..");
         }
 
-        async void SubmitRegistration()
+        async Task SubmitRegistration()
         {
             if (string.IsNullOrWhiteSpace(Name) ||
                 string.IsNullOrWhiteSpace(Email) ||
