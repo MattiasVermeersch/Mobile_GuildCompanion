@@ -7,10 +7,6 @@
              x:DataType="viewmodels:ArenaViewModel"
              Title="{Binding Title}">
 
-    <ContentPage.BindingContext>
-        <viewmodels:ArenaViewModel/>
-    </ContentPage.BindingContext>
-    
     <ContentPage.Content>
         <ListView 
             SelectedItem="{Binding SelectedArena, Mode=TwoWay}"

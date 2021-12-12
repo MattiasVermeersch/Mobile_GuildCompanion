@@ -1,4 +1,6 @@
-﻿using Mde.Project.Mobile.ViewModels;
+﻿using Autofac;
+using Mde.Project.Mobile.IoC;
+using Mde.Project.Mobile.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +19,11 @@ namespace Mde.Project.Mobile.Pages
         {
             InitializeComponent();
 
-            (BindingContext as BattlegroundViewModel).RefreshCommand.ExecuteAsync();
+            var viewModel = IoCResolver.Container.Resolve<BattlegroundViewModel>();
+
+            BindingContext = viewModel;
+
+            viewModel.RefreshCommand.ExecuteAsync();
         }
     }
 }
