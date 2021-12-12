@@ -1,12 +1,6 @@
 ﻿using Autofac;
-using Mde.Project.Mobile.ViewModels;
 using Mde.Project.Mobile.IoC;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using Mde.Project.Mobile.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,7 +13,11 @@ namespace Mde.Project.Mobile.Pages
         {
             InitializeComponent();
 
-            (BindingContext as RaidViewModel).RefreshCommand.ExecuteAsync();
+            var viewModel = IoCResolver.Container.Resolve<RaidViewModel>();
+
+            BindingContext = viewModel;
+
+            viewModel.RefreshCommand.ExecuteAsync();
         }
     }
 }
