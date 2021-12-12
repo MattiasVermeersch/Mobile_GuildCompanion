@@ -7,10 +7,6 @@
              x:DataType="viewmodels:BattlegroundViewModel"
              Title="{Binding Title}">
 
-    <ContentPage.BindingContext>
-        <viewmodels:BattlegroundViewModel/>
-    </ContentPage.BindingContext>
-
     <ContentPage.Content>
         <ListView 
             SelectedItem="{Binding SelectedBattleground, Mode=TwoWay}"
