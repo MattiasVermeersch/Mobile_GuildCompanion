@@ -10,9 +10,9 @@ namespace Mde.Project.Mobile.ViewModels
     public class DungeonViewModel : ViewModelBase
     {
         private readonly IEventService<DungeonModel> _dungeonService;
-        public DungeonViewModel()
+        public DungeonViewModel(IEventService<DungeonModel> dungeonService)
         {
-            _dungeonService = DependencyService.Get<IEventService<DungeonModel>>();
+            _dungeonService = dungeonService;
             Title = "PvE";
         }
 
