@@ -12,9 +12,9 @@ namespace Mde.Project.Mobile.ViewModels
     {
         private readonly ICharactersService _characterService;
 
-        public CharacterViewModel()
+        public CharacterViewModel(ICharactersService characterService)
         {
-            _characterService = DependencyService.Get<ICharactersService>();
+            _characterService = characterService;
             Title = "My Characters";
         }
 
