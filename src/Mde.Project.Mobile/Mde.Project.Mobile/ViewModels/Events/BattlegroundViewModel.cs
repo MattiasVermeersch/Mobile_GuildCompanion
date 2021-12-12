@@ -11,9 +11,9 @@ namespace Mde.Project.Mobile.ViewModels
     public class BattlegroundViewModel : ViewModelBase
     {
         private readonly IEventService<BattlegroundModel> _battlegroundService;
-        public BattlegroundViewModel()
+        public BattlegroundViewModel(IEventService<BattlegroundModel> battlegroundService)
         {
-            _battlegroundService = DependencyService.Get<IEventService<BattlegroundModel>>();
+            _battlegroundService = battlegroundService;
             Title = "PvP";
         }
 
