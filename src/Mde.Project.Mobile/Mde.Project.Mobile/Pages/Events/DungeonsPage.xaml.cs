@@ -1,10 +1,6 @@
-﻿using Mde.Project.Mobile.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using Autofac;
+using Mde.Project.Mobile.IoC;
+using Mde.Project.Mobile.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,7 +13,11 @@ namespace Mde.Project.Mobile.Pages
         {
             InitializeComponent();
 
-            (BindingContext as DungeonViewModel).RefreshCommand.ExecuteAsync();
+            var viewModel = IoCResolver.Container.Resolve<DungeonViewModel>();
+
+            BindingContext = viewModel;
+
+            viewModel.RefreshCommand.ExecuteAsync();
         }
     }
 }
