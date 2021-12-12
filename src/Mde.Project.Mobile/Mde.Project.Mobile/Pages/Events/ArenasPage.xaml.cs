@@ -23,7 +23,7 @@ namespace Mde.Project.Mobile.Pages
             var viewModel = IoCResolver.Container.Resolve<ArenaViewModel>();
 
             //Bind the viewmodel to the Context of the page
-            //note: this makes the <ContentPage.BindingContext> tag in the page obsolete, but removal is necessary for injecting into ctor
+            //note: this makes the <ContentPage.BindingContext> tag in the page obsolete, but removal is necessary when injecting into ctor
             BindingContext = viewModel;
 
             //Finally the Initialize method must be triggered when loading the page through the viewmodel object
