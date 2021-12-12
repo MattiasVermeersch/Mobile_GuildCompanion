@@ -6,10 +6,6 @@
              x:Class="Mde.Project.Mobile.Pages.RaidsPage"
              x:DataType="viewmodels:RaidViewModel"
              Title="{Binding Title}">
-
-    <ContentPage.BindingContext>
-        <viewmodels:RaidViewModel/>
-    </ContentPage.BindingContext>
     
     <ContentPage.Content>
         <ListView 
