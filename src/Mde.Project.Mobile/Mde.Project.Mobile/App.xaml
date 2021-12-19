@@ -33,6 +33,12 @@
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
 
+            <Style x:Key="FormLabel" TargetType="Label">
+                <Setter Property="TextTransform" Value="Uppercase"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
             <Style x:Key="FormLayout" TargetType="StackLayout">
                 <Setter Property="Padding" Value="20"/>
                 <Setter Property="Spacing" Value="30"/>
