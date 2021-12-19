@@ -1,6 +1,11 @@
-﻿using System;
+﻿using Autofac;
+using Mde.Project.Mobile.IoC;
+using Plugin.Toasts;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Mde.Project.Mobile.ViewModels
 {
@@ -8,7 +13,7 @@ namespace Mde.Project.Mobile.ViewModels
     {
         public HomeViewModel()
         {
-
+            Title = "Home";
         }
 
         #region Properties
@@ -16,7 +21,49 @@ namespace Mde.Project.Mobile.ViewModels
         #endregion
 
         #region Methods
+        public override async Task GetData()
+        {
+            IsBusy = true;
 
+            await base.GetData();
+            await ShowNotification();
+
+            IsBusy = false;
+        }
+
+        async Task ShowNotification()
+        {
+            var notificator = DependencyService.Get<IToastNotificator>();
+
+            //Description right now is a placeholder. When ApiService is implemented the relevant variables will be used.
+            var options = new NotificationOptions()
+            {
+                Title = "You have events today!",
+                Description = "Check it out!",
+                IsClickable = true,
+                WindowsOptions = new WindowsOptions()
+                {
+                    LogoUri = "wow_icon.png"
+                },
+                ClearFromHistory = true,
+                AllowTapInNotificationCenter = false,
+                AndroidOptions = new AndroidOptions()
+                {
+                    HexColor = "#00cb3b",
+                    ForceOpenAppOnNotificationTap = true
+                }
+            };
+
+            var result = await notificator.Notify(options);
+            if(result.Action == NotificationAction.Clicked)
+            {
+                await Shell.Current.DisplayAlert("Alert","You clicked to see your events.", "OK");
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Alert", "You did not click to see your events.", "OK");
+            }
+        }
         #endregion
 
     }
