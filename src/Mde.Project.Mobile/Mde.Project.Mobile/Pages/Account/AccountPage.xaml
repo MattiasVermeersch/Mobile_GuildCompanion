@@ -1,28 +1,56 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mde.Project.Mobile.Pages.AccountPage">
+             xmlns:viewmodels="clr-namespace:Mde.Project.Mobile.ViewModels"
+             x:Class="Mde.Project.Mobile.Pages.AccountPage"
+             Title="{Binding Title}"
+             x:DataType="viewmodels:AccountViewModel">
+    
     <ContentPage.Content>
-        <!--<Image Source="" Aspect="AspectFill" Opacity="0.1"/>-->
-        <StackLayout Padding="20">
-            
-            <Label Style="{StaticResource PageHeader}">Account</Label>
-            <BoxView HeightRequest="10"/>
-            <Label x:Name="lblNameTitle" Text="Name" TextColor="Black"/>
-            <Label x:Name="lblName" TextColor="Black" FontAttributes="Italic" IsVisible="False"/>
-            <Entry x:Name="txtName" Keyboard="Text" TextColor="Black"/>
+        <StackLayout BackgroundColor="DarkSlateGray">
+            <ScrollView HorizontalOptions="Center">
+                <StackLayout Style="{StaticResource FormLayout}">
+                    <BoxView HeightRequest="10"/>
+                    <Frame CornerRadius="100"
+                           HeightRequest="100"
+                           WidthRequest="100"
+                           HasShadow="True"
+                           HorizontalOptions="Center"
+                           BackgroundColor="Transparent"
+                           IsClippedToBounds="True"
+                           Padding="0">
+                        <Image Source="default_avatar_icon.png"/>
+                    </Frame>
 
-            <Label x:Name="lblEmailTitle" Text="Email" TextColor="Black"/>
-            <Label x:Name="lblEmail" TextColor="Black" FontAttributes="Italic" IsVisible="False"/>
-            <Entry x:Name="txtEmail" Keyboard="Email" TextColor="Black"/>
+                    <Label Text="Email:"
+                           Style="{StaticResource FormLabel}"/>
+                    <Label Text="{Binding Email}"/>
 
-            <Label x:Name="lblDiscordTitle" Text="Your Discord" TextColor="Black"/>
-            <Label x:Name="lblDiscordId" TextColor="Black" FontAttributes="Italic" IsVisible="False"/>
-            <Entry x:Name="txtDiscordId" Keyboard="Text" TextColor="Black"/>
+                    <Label Text="City:"
+                           Style="{StaticResource FormLabel}"/>
+                    <Label Text="{Binding City}"/>
 
-            <Button x:Name="btnEdit" Text="Edit info" Clicked="btnEdit_Clicked" IsVisible="False"/>
-            <Button x:Name="btnSave" Text="Save" Clicked="btnSave_Clicked"/>
-            <Button x:Name="btnCancel" Text="Cancel" Clicked="btnCancel_Clicked"/>
+                    <Label Text="Date of birth:"
+                           Style="{StaticResource FormLabel}"/>
+                    <Label Text="{Binding BirthDate, StringFormat='{0: dd/MM/yyyy}'}"/>
+
+                    <Label Text="Address:"
+                           Style="{StaticResource FormLabel}"/>
+                    <Label Text="{Binding Address}"/>
+
+                    <Label Text="Full name:"
+                           Style="{StaticResource FormLabel}"/>
+                    <Label Text="{Binding FullName}"/>
+
+                    <Label Text="Battle.Net Id:"
+                           Style="{StaticResource FormLabel}"/>
+                    <Label Text="{Binding BattleNetId}"/>
+
+                    <!--<Button x:Name="btnEdit" Text="Edit info" Clicked="btnEdit_Clicked"/>
+                    <Button x:Name="btnSave" Text="Save" Clicked="btnSave_Clicked"/>
+                    <Button x:Name="btnCancel" Text="Cancel" Clicked="btnCancel_Clicked"/>-->
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
