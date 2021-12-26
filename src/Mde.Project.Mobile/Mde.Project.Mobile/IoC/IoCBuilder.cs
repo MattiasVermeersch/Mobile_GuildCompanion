@@ -1,8 +1,10 @@
 ﻿using Autofac;
+using Autofac.Core;
 using Mde.Project.Mobile.Domain.Interfaces;
 using Mde.Project.Mobile.Domain.Models;
 using Mde.Project.Mobile.Domain.Services;
 using Mde.Project.Mobile.ViewModels;
+using Plugin.Toasts;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,34 +13,78 @@ namespace Mde.Project.Mobile.IoC
 {
     public static class IoCBuilder
     {
+        static readonly ContainerBuilder containerBuilder = new ContainerBuilder();
+
+        //generic methods
+        public static void RegisterType<T>()
+            where T: class
+        {
+            containerBuilder.RegisterType<T>();
+        }
+
+        public static void RegisterType<TInterface, T>()
+            where TInterface : class
+            where T : class, TInterface
+        {
+            containerBuilder.RegisterType<T>().As<TInterface>();
+        }
+
+        public static void RegisterTypeWithParameters<T>(Type param1Type, object param1Value, Type param2Type, string param2Name)
+            where T : class
+        {
+            containerBuilder.RegisterType<T>()
+                .WithParameters(new List<Parameter>()
+                {
+                    new TypedParameter(param1Type, param1Value),
+                    new ResolvedParameter(
+                        (pi, ctx) => pi.ParameterType == param2Type && pi.Name == param2Name,
+                        (pi, ctx) => ctx.Resolve(param2Type))
+                });
+        }
+
+        public static void RegisterTypeWithParameters<TInterface, T>(Type param1Type, object param1Value, Type param2Type, string param2Name)
+            where TInterface : class
+            where T : class, TInterface
+        {
+            containerBuilder.RegisterType<T>()
+                .WithParameters(new List<Parameter>()
+                {
+                    new TypedParameter(param1Type, param1Value),
+                    new ResolvedParameter(
+                        (pi, ctx) => pi.ParameterType == param2Type && pi.Name == param2Name,
+                        (pi, ctx) => ctx.Resolve(param2Type))
+                }).As<TInterface>();
+        }
+
         //method to create ContainerBuilder
         public static ContainerBuilder GetContainerBuilder()
         {
-            var containerBuilder = new ContainerBuilder();
-
             #region ViewModels
             //register the viewmodels
-            containerBuilder.RegisterType<CharacterViewModel>().AsSelf();
+            RegisterType<CharacterViewModel>();
 
-            containerBuilder.RegisterType<ArenaViewModel>().AsSelf();
-            containerBuilder.RegisterType<BattlegroundViewModel>().AsSelf();
-            containerBuilder.RegisterType<DungeonViewModel>().AsSelf();
-            containerBuilder.RegisterType<RaidViewModel>().AsSelf();
+            RegisterType<ArenaViewModel>();
+            RegisterType<BattlegroundViewModel>();
+            RegisterType<DungeonViewModel>();
+            RegisterType<RaidViewModel>();
 
-            containerBuilder.RegisterType<HomeViewModel>().AsSelf();
+            RegisterType<HomeViewModel>();
 
-            containerBuilder.RegisterType<LoginViewModel>().AsSelf();
-            containerBuilder.RegisterType<RegisterViewModel>().AsSelf();
+            RegisterType<LoginViewModel>();
+            RegisterType<RegisterViewModel>();
+            RegisterType<AccountViewModel>();
             #endregion
 
             #region Services
             //register the services
-            containerBuilder.RegisterType<CharactersService>().As<ICharactersService>();
+            RegisterType<ICharactersService, CharactersService>();
 
-            containerBuilder.RegisterType<ArenaService>().As<IEventService<ArenaModel>>();
-            containerBuilder.RegisterType<BattlegroundService>().As<IEventService<BattlegroundModel>>();
-            containerBuilder.RegisterType<DungeonService>().As<IEventService<DungeonModel>>();
-            containerBuilder.RegisterType<RaidService>().As<IEventService<RaidModel>>();
+            RegisterType<IEventService<ArenaModel> ,ArenaService>();
+            RegisterType<IEventService<BattlegroundModel>, BattlegroundService>();
+            RegisterType<IEventService<DungeonModel>, DungeonService>();
+            RegisterType<IEventService<RaidModel>,RaidService>();
+
+            RegisterType<IAccountService, AccountService>();
             #endregion
 
             return containerBuilder;

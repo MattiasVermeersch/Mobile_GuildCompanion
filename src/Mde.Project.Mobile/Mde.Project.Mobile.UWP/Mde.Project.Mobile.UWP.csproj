@@ -104,8 +104,9 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\images\default_avatar_icon.png" />
     <Content Include="Assets\images\emc_logo.jpg" />
-    <AndroidResource Include="Assets\images\wow_icon.png" />
+    <Content Include="Assets\images\wow_icon.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
     <Content Include="Assets\LargeTile.scale-400.png" />

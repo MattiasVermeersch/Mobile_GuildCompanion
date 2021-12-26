@@ -7,10 +7,6 @@
              Shell.NavBarIsVisible="False"
              x:DataType="viewmodels:RegisterViewModel">
 
-    <ContentPage.BindingContext>
-        <viewmodels:RegisterViewModel/>
-    </ContentPage.BindingContext>
-    
     <ContentPage.Content>
         <StackLayout Style="{StaticResource FormLayout}">
             <BoxView HeightRequest="10"/>

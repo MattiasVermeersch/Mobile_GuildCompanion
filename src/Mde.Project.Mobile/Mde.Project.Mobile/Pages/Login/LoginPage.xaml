@@ -6,10 +6,6 @@
              Shell.FlyoutBehavior="Disabled"
              Shell.NavBarIsVisible="False"
              x:DataType="viewmodels:LoginViewModel">
-
-    <ContentPage.BindingContext>
-        <viewmodels:LoginViewModel/>
-    </ContentPage.BindingContext>
     
     <ContentPage.Content>
         <StackLayout Style="{StaticResource FormLayout}">
