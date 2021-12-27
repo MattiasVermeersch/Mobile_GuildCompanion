@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using Xamarin.Forms;
 
 namespace Mde.Project.Mobile.Domain.Models
 {
@@ -16,6 +17,7 @@ namespace Mde.Project.Mobile.Domain.Models
         public string Address { get; set; }
         public string FullName { get; set; }
         public string BattleNetId { get; set; }
+        public string AvatarPath { get; set; }
     }
 }
 
