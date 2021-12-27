@@ -7,50 +7,54 @@
              x:DataType="viewmodels:AccountViewModel">
     
     <ContentPage.Content>
-        <StackLayout BackgroundColor="DarkSlateGray">
-            <ScrollView HorizontalOptions="Center">
-                <StackLayout Style="{StaticResource FormLayout}">
-                    <BoxView HeightRequest="10"/>
-                    <Frame CornerRadius="100"
-                           HeightRequest="100"
-                           WidthRequest="100"
-                           HasShadow="True"
-                           HorizontalOptions="Center"
-                           BackgroundColor="Transparent"
-                           IsClippedToBounds="True"
-                           Padding="0">
-                        <Image Source="default_avatar_icon.png"/>
-                    </Frame>
+        <ScrollView>
+            <StackLayout Style="{StaticResource FormLayout}"
+                         Padding="40">
+                <Frame CornerRadius="100"
+                       HeightRequest="100"
+                       WidthRequest="100"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       IsClippedToBounds="True"
+                       Padding="0">
+                    <Image Source="{Binding ProfilePicture}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"/>
+                </Frame>
 
-                    <Label Text="Email:"
-                           Style="{StaticResource FormLabel}"/>
-                    <Label Text="{Binding Email}"/>
+                <Label Text="Email:"
+                        Style="{StaticResource FormLabel}"/>
+                <Label Text="{Binding Email}"/>
 
-                    <Label Text="City:"
-                           Style="{StaticResource FormLabel}"/>
-                    <Label Text="{Binding City}"/>
+                <Label Text="City:"
+                        Style="{StaticResource FormLabel}"/>
+                <Label Text="{Binding City}"/>
 
-                    <Label Text="Date of birth:"
-                           Style="{StaticResource FormLabel}"/>
-                    <Label Text="{Binding BirthDate, StringFormat='{0: dd/MM/yyyy}'}"/>
+                <Label Text="Date of birth:"
+                        Style="{StaticResource FormLabel}"/>
+                <Label Text="{Binding BirthDate, StringFormat='{0: dd/MM/yyyy}'}"/>
 
-                    <Label Text="Address:"
-                           Style="{StaticResource FormLabel}"/>
-                    <Label Text="{Binding Address}"/>
+                <Label Text="Address:"
+                        Style="{StaticResource FormLabel}"/>
+                <Label Text="{Binding Address}"/>
 
-                    <Label Text="Full name:"
-                           Style="{StaticResource FormLabel}"/>
-                    <Label Text="{Binding FullName}"/>
+                <Label Text="Full name:"
+                        Style="{StaticResource FormLabel}"/>
+                <Label Text="{Binding FullName}"/>
 
-                    <Label Text="Battle.Net Id:"
-                           Style="{StaticResource FormLabel}"/>
-                    <Label Text="{Binding BattleNetId}"/>
+                <Label Text="Battle.Net Id:"
+                        Style="{StaticResource FormLabel}"/>
+                <Label Text="{Binding BattleNetId}"/>
+                
+                
+                <Button Text="Save" Command="{Binding SaveProfileCommand}"/>
+                <Button Text="Take photo" Command="{Binding TakePhotoCommand}"/>
 
-                    <!--<Button x:Name="btnEdit" Text="Edit info" Clicked="btnEdit_Clicked"/>
-                    <Button x:Name="btnSave" Text="Save" Clicked="btnSave_Clicked"/>
-                    <Button x:Name="btnCancel" Text="Cancel" Clicked="btnCancel_Clicked"/>-->
-                </StackLayout>
-            </ScrollView>
-        </StackLayout>
+
+                <!--<Button x:Name="btnEdit" Text="Edit info" Clicked="btnEdit_Clicked"/>
+                
+                <Button x:Name="btnCancel" Text="Cancel" Clicked="btnCancel_Clicked"/>-->
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
