@@ -1,4 +1,5 @@
-﻿using Mde.Project.Mobile.Pages;
+﻿using Mde.Project.Mobile.Domain.Interfaces;
+using Mde.Project.Mobile.Pages;
 using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,11 @@ namespace Mde.Project.Mobile.ViewModels
 {
     public class LoginViewModel : ViewModelBase
     {
-        public LoginViewModel()
+        private readonly IAuthService _authService;
+        public LoginViewModel(IAuthService authService)
         {
+            _authService = authService;
+
             //Defaults for props
             Title = "Login";
             EmailTitle = "Email";
@@ -47,11 +51,25 @@ namespace Mde.Project.Mobile.ViewModels
         #region Methods
         async Task LoggingIn()
         {
-            if (string.IsNullOrWhiteSpace(Email) || Email.ToLower() != "mvermeersch")
-                await App.Current.MainPage.DisplayAlert("Error", "Your credentials do not grant you access!", "OK");
+            if(!string.IsNullOrWhiteSpace(Password) || !string.IsNullOrWhiteSpace(Email))
+            {
+                var loginSuccess = await _authService.Login(Email, Password);
+
+                if (!loginSuccess)
+                    await App.Current.MainPage.DisplayAlert("Error", "Your Email or Password is incorrect.", "OK");
             
-            else 
-                await AppShell.Current.GoToAsync($"//{nameof(HomePage)}");
+                else
+                {
+                    Email = null;
+                    Password = null;
+                    await AppShell.Current.GoToAsync($"//{nameof(HomePage)}");
+                }
+                    
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Error", "Please fill in your Email and Password.", "OK");
+            }
         }
 
         async Task GoToRegister()
