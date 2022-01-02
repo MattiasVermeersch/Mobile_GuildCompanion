@@ -9,6 +9,8 @@ namespace Mde.Project.Mobile.Domain.Interfaces
     public interface IAccountService
     {
         Task<AccountModel> GetProfile();
+        Task<string> GetProfilePicture();
+        Task<bool> SaveProfilePicture(string photoPath);
         Task<bool> SaveProfile(AccountModel profile);
     }
 }
