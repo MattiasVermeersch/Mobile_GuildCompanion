@@ -1,4 +1,5 @@
-﻿using Mde.Project.Mobile.Pages;
+﻿using Mde.Project.Mobile.Domain.Interfaces;
+using Mde.Project.Mobile.Pages;
 using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,10 @@ namespace Mde.Project.Mobile.ViewModels
 {
     public class RegisterViewModel : ViewModelBase
     {
-        public RegisterViewModel()
+        protected readonly IAuthService _authService;
+        public RegisterViewModel(IAuthService authService)
         {
+            _authService = authService;
             Title = "Register here";
 
             //Commands
@@ -27,28 +30,56 @@ namespace Mde.Project.Mobile.ViewModels
         #endregion
 
         #region Entries
-        public string name;
-        public string Name
+        string firstName;
+        public string FirstName
         {
-            get => name;
-            set => SetProperty(ref name, value);
+            get => firstName;
+            set => SetProperty(ref firstName, value);
         }
 
-        public string email;
+        string lastName;
+        public string LastName
+        {
+            get => lastName;
+            set => SetProperty(ref lastName, value);
+        }
+
+        string email;
         public string Email
         {
             get => email;
             set => SetProperty(ref email, value);
         }
 
-        public string password;
+        string city;
+        public string City
+        {
+            get => city;
+            set => SetProperty(ref city, value);
+        }
+
+        string address;
+        public string Address
+        {
+            get => address;
+            set => SetProperty(ref address, value);
+        }
+
+        DateTime birthDate;
+        public DateTime BirthDate
+        {
+            get => birthDate;
+            set => SetProperty(ref birthDate, value);
+        }
+
+        string password;
         public string Password
         {
             get => password;
             set => SetProperty(ref password, value);
         }
 
-        public string confirmPassword;
+        string confirmPassword;
         public string ConfirmPassword 
         { 
             get => confirmPassword; 
@@ -67,7 +98,8 @@ namespace Mde.Project.Mobile.ViewModels
 
         async Task SubmitRegistration()
         {
-            if (string.IsNullOrWhiteSpace(Name) ||
+            if (string.IsNullOrWhiteSpace(FirstName) ||
+                string.IsNullOrWhiteSpace(LastName) ||
                 string.IsNullOrWhiteSpace(Email) ||
                 string.IsNullOrWhiteSpace(Password) ||
                 string.IsNullOrWhiteSpace(ConfirmPassword))
@@ -82,8 +114,10 @@ namespace Mde.Project.Mobile.ViewModels
             else
             {
                 //Save the information through API call here then Login and navigate to HomePage
-                await App.Current.MainPage.DisplayAlert("Alert", "You have successfully registered! Have a look around.", "OK");
-                await AppShell.Current.GoToAsync($"//{nameof(HomePage)}");
+                await _authService.RegisterNewUser(FirstName, LastName, Email, City, Address, BirthDate, Password, ConfirmPassword);
+
+                await App.Current.MainPage.DisplayAlert("Alert", "You have successfully registered!", "OK");
+                await AppShell.Current.GoToAsync($"//{nameof(LoginPage)}");
             }
         }
         #endregion
