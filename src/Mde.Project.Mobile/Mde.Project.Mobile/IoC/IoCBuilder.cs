@@ -61,6 +61,8 @@ namespace Mde.Project.Mobile.IoC
         {
             #region ViewModels
             //register the viewmodels
+            RegisterType<ShellViewModel>();
+
             RegisterType<CharacterViewModel>();
 
             RegisterType<ArenaViewModel>();
@@ -76,15 +78,18 @@ namespace Mde.Project.Mobile.IoC
             #endregion
 
             #region Services
-            //register the services
-            RegisterType<ICharactersService, CharactersService>();
+            //register the ApiServices
+            RegisterType<IAuthService, AuthService>();
 
-            RegisterType<IEventService<ArenaModel> ,ArenaService>();
-            RegisterType<IEventService<BattlegroundModel>, BattlegroundService>();
-            RegisterType<IEventService<DungeonModel>, DungeonService>();
-            RegisterType<IEventService<RaidModel>,RaidService>();
+            //register the MockServices
+            RegisterType<ICharactersService, MockCharactersService>();
 
-            RegisterType<IAccountService, AccountService>();
+            RegisterType<IEventService<ArenaModel> ,MockArenaService>();
+            RegisterType<IEventService<BattlegroundModel>, MockBattlegroundService>();
+            RegisterType<IEventService<DungeonModel>, MockDungeonService>();
+            RegisterType<IEventService<RaidModel>,MockRaidService>();
+
+            RegisterType<IAccountService, MockAccountService>();
             #endregion
 
             return containerBuilder;
