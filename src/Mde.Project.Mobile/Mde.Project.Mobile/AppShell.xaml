@@ -2,16 +2,19 @@
 <Shell  xmlns="http://xamarin.com/schemas/2014/forms"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
         xmlns:pages="clr-namespace:Mde.Project.Mobile.Pages"
-        x:Class="Mde.Project.Mobile.AppShell">
+        xmlns:fa="clr-namespace:FontAwesome"
+        x:Class="Mde.Project.Mobile.AppShell"
+        FlyoutBackgroundColor="White">
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
-            <Grid BackgroundColor="DarkSeaGreen" Padding="10">
+            <Grid BackgroundColor="DarkGreen" Padding="20">
                 <Label Text="Guild Companion"
                            Style="{StaticResource LabelWhiteHeader}"
                            Grid.Row="1"/>
                 <Label Text="Mattias Vermeersch"
                            Style="{StaticResource LabelSubHeader}"
-                           Grid.Row="2"/>
+                           Grid.Row="2"
+                       TextColor="GhostWhite"/>
             </Grid>
         </DataTemplate>
     </Shell.FlyoutHeaderTemplate>
@@ -20,22 +23,84 @@
         <ShellContent ContentTemplate="{DataTemplate pages:LoginPage}"/>
     </ShellItem>
 
-    <FlyoutItem Title="Home" Icon="">
+    <FlyoutItem Title="Home">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FAS" 
+                             Glyph="{x:Static fa:FontAwesomeIcons.Home}" 
+                             Color="Green"/>
+        </FlyoutItem.Icon>
+        <Shell.FlyoutBackdrop>
+            <LinearGradientBrush StartPoint="0,0"
+                               EndPoint="1,1">
+                <GradientStop Color="DarkGreen"
+                            Offset="0.3" />
+                <GradientStop Color="Gold"
+                            Offset="1.0" />
+            </LinearGradientBrush>
+        </Shell.FlyoutBackdrop>
         <ShellContent ContentTemplate="{DataTemplate pages:HomePage}" Route="HomePage"/>
     </FlyoutItem>
     
-    <FlyoutItem Title="Events" Icon="">
+    <FlyoutItem Title="Events">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FAR" 
+                             Glyph="{x:Static fa:FontAwesomeIcons.Clipboard}" 
+                             Color="Green"/>
+        </FlyoutItem.Icon>
+        <Shell.FlyoutBackdrop>
+            <LinearGradientBrush StartPoint="0,0"
+                               EndPoint="1,1">
+                <GradientStop Color="DarkGreen"
+                            Offset="0.3" />
+                <GradientStop Color="Gold"
+                            Offset="1.0" />
+            </LinearGradientBrush>
+        </Shell.FlyoutBackdrop>
         <ShellContent ContentTemplate="{DataTemplate pages:EventsPage}" Route="EventsPage"/>
     </FlyoutItem>
 
-    <FlyoutItem Title="Characters" Icon="">
+    <FlyoutItem Title="Characters">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FAS" 
+                             Glyph="{x:Static fa:FontAwesomeIcons.UserFriends}" 
+                             Color="Green"/>
+        </FlyoutItem.Icon>
+        <Shell.FlyoutBackdrop>
+            <LinearGradientBrush StartPoint="0,0"
+                               EndPoint="1,1">
+                <GradientStop Color="DarkGreen"
+                            Offset="0.3" />
+                <GradientStop Color="Gold"
+                            Offset="1.0" />
+            </LinearGradientBrush>
+        </Shell.FlyoutBackdrop>
         <ShellContent ContentTemplate="{DataTemplate pages:CharactersPage}" Route="CharactersPage"/>
     </FlyoutItem>
     
-    <FlyoutItem Title="Account" Icon="">
+    <FlyoutItem Title="Account">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FAS" 
+                             Glyph="{x:Static fa:FontAwesomeIcons.UserCircle}" 
+                             Color="Green"/>
+        </FlyoutItem.Icon>
+        <Shell.FlyoutBackdrop>
+            <LinearGradientBrush StartPoint="0,0"
+                               EndPoint="1,1">
+                <GradientStop Color="DarkGreen"
+                            Offset="0.3" />
+                <GradientStop Color="Gold"
+                            Offset="1.0" />
+            </LinearGradientBrush>
+        </Shell.FlyoutBackdrop>
         <ShellContent ContentTemplate="{DataTemplate pages:AccountPage}" Route="AccountPage"/>
     </FlyoutItem>
-    
-    <MenuItem Text="Logout" Clicked="MenuItem_Clicked"/>
+
+    <MenuItem Text="Logout" Command="{Binding LogoutCommand}">
+        <MenuItem.IconImageSource>
+            <FontImageSource FontFamily="FAS"
+                             Glyph="{x:Static fa:FontAwesomeIcons.SignOutAlt}"
+                             Color="Green"/>
+        </MenuItem.IconImageSource>
+    </MenuItem>
 
 </Shell>
