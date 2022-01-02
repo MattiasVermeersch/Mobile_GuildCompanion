@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mde.Project.Mobile.Domain.Services
 {
-    public class DungeonService : IEventService<DungeonModel>
+    public class MockDungeonService : IEventService<DungeonModel>
     {
         private static List<DungeonModel> dungeonEvents = new List<DungeonModel>
         {

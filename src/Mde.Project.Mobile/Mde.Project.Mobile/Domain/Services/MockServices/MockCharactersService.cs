@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mde.Project.Mobile.Domain.Services
 {
-    public class CharactersService : ICharactersService
+    public class MockCharactersService : ICharactersService
     {
         private static List<CharacterModel> characters = new List<CharacterModel>
         {

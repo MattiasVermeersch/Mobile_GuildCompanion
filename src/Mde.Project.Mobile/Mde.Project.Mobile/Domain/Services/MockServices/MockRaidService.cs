@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mde.Project.Mobile.Domain.Services
 {
-    public class RaidService : IEventService<RaidModel>
+    public class MockRaidService : IEventService<RaidModel>
     {
         private static List<RaidModel> raidEvents = new List<RaidModel>
         {
