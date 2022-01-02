@@ -10,50 +10,64 @@
         <ScrollView>
             <StackLayout Style="{StaticResource FormLayout}"
                          Padding="40">
-                <Frame CornerRadius="100"
-                       HeightRequest="100"
-                       WidthRequest="100"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       IsClippedToBounds="True"
-                       Padding="0">
                     <Image Source="{Binding ProfilePicture}"
                            HorizontalOptions="FillAndExpand"
-                           VerticalOptions="FillAndExpand"/>
-                </Frame>
+                           VerticalOptions="FillAndExpand"
+                           InputTransparent="True"
+                           WidthRequest="200"/>
+                <Button Text="Take new profile pic" 
+                        Command="{Binding TakePhotoCommand}"
+                        HorizontalOptions="Center"
+                        WidthRequest="200"/>
 
                 <Label Text="Email:"
                         Style="{StaticResource FormLabel}"/>
-                <Label Text="{Binding Email}"/>
+                <Label Text="{Binding Email}" IsVisible="{Binding IsRead}"/>
+                <Entry Text="{Binding Email}" IsVisible="{Binding IsEdit}"
+                       Keyboard="Text"/>
 
                 <Label Text="City:"
                         Style="{StaticResource FormLabel}"/>
-                <Label Text="{Binding City}"/>
+                <Label Text="{Binding City}" IsVisible="{Binding IsRead}"/>
+                <Entry Text="{Binding City}" IsVisible="{Binding IsEdit}"
+                       Keyboard="Text"/>
 
                 <Label Text="Date of birth:"
                         Style="{StaticResource FormLabel}"/>
-                <Label Text="{Binding BirthDate, StringFormat='{0: dd/MM/yyyy}'}"/>
+                <Label Text="{Binding BirthDate, StringFormat='{0: dd/MM/yyyy}'}" IsVisible="{Binding IsRead}"/>
+                <DatePicker Date="{Binding BirthDate}" IsVisible="{Binding IsEdit}"/>
 
                 <Label Text="Address:"
                         Style="{StaticResource FormLabel}"/>
-                <Label Text="{Binding Address}"/>
+                <Label Text="{Binding Address}" IsVisible="{Binding IsRead}"/>
+                <Entry Text="{Binding Address}" IsVisible="{Binding IsEdit}"
+                       Keyboard="Text"/>
 
                 <Label Text="Full name:"
                         Style="{StaticResource FormLabel}"/>
-                <Label Text="{Binding FullName}"/>
+                <Label Text="{Binding FullName}" IsVisible="{Binding IsRead}"/>
+                <Entry Text="{Binding FullName}" IsVisible="{Binding IsEdit}"
+                       Keyboard="Text"/>
 
                 <Label Text="Battle.Net Id:"
                         Style="{StaticResource FormLabel}"/>
-                <Label Text="{Binding BattleNetId}"/>
-                
-                
-                <Button Text="Save" Command="{Binding SaveProfileCommand}"/>
-                <Button Text="Take photo" Command="{Binding TakePhotoCommand}"/>
+                <Label Text="{Binding BattleNetId}" IsVisible="{Binding IsRead}"/>
+                <Entry Text="{Binding BattleNetId}" IsVisible="{Binding IsEdit}"
+                       Keyboard="Text"/>
 
+                <Button Text="Edit account info" Command="{Binding EditCommand}" IsVisible="{Binding IsRead}"
+                        HorizontalOptions="Center"/>
 
-                <!--<Button x:Name="btnEdit" Text="Edit info" Clicked="btnEdit_Clicked"/>
-                
-                <Button x:Name="btnCancel" Text="Cancel" Clicked="btnCancel_Clicked"/>-->
+                <Grid>
+                    <Button Text="Save info"
+                            Grid.Column="0"
+                            Command="{Binding SaveProfileCommand}" 
+                            IsVisible="{Binding IsEdit}"/>
+                    <Button Text="Cancel"
+                            Grid.Column="1"
+                            Command="{Binding CancelCommand}" 
+                            IsVisible="{Binding IsEdit}"/>
+                </Grid>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
