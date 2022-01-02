@@ -15,12 +15,12 @@
                    WidthRequest="50"
                    HasShadow="False"
                    BackgroundColor="Transparent">
-                <Image Source="wow_icon.jpg" HeightRequest="100"/>
+                <Image Source="wow_icon.png" HeightRequest="100"/>
             </Frame>
 
             <Label Text="{Binding Title}"
                    Style="{StaticResource LabelBaseHeader}"
-                   TextColor="AntiqueWhite"
+                   TextColor="DarkCyan"
                    FontSize="50"/>
             
             <Label Text="{Binding EmailTitle}"/>
