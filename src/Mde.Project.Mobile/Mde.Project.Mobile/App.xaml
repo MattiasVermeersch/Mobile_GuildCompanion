@@ -25,32 +25,54 @@
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
             </Style>
 
+            <OnPlatform x:Key="WCFont" x:TypeArguments="x:String">
+                <On Platform="Android" Value="WarcraftFont.ttf#warcraft"/>
+                <On Platform="UWP" Value="/Assets/Fonts/WarcraftFont.ttf#warcraft"/>
+            </OnPlatform>
+
             <Style x:Key="PageHeader" TargetType="Label">
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="TextTransform" Value="Uppercase"/>
-                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="FontSize" Value="30"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
 
             <Style x:Key="FormLabel" TargetType="Label">
                 <Setter Property="TextTransform" Value="Uppercase"/>
-                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="TextColor" Value="Green"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="ImageLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="60"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalTextAlignment" Value="Center"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="TextColor" Value="White"/>
             </Style>
 
             <Style x:Key="FormLayout" TargetType="StackLayout">
                 <Setter Property="Padding" Value="20"/>
                 <Setter Property="Spacing" Value="30"/>
                 <Setter Property="Orientation" Value="Vertical"/>
-                <Setter Property="BackgroundColor" Value="DarkSlateGray"/>
+                <Setter Property="BackgroundColor" Value="GhostWhite"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
             </Style>
 
+            <Style x:Key="ImageBanner" TargetType="Image">
+                <Setter Property="Opacity" Value="0.8"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+            </Style>
+
             <Style x:Key="ButtonBase" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="Azure"/>
-                <Setter Property="TextColor" Value="DarkRed"/>
-                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="BackgroundColor" Value="DarkGreen"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="BorderColor" Value="Black"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>
