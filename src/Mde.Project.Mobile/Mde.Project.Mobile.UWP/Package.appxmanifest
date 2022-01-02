@@ -32,11 +32,10 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="Mde.Project.Mobile.UWP.App">
       <uap:VisualElements
-        DisplayName="WoW: Guild Companion"
+        DisplayName="Guild Companion"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="UWP project for the WoW: Guild Companion app"
-        BackgroundColor="transparent">
+        Description="UWP project for the WoW: Guild Companion app" BackgroundColor="#182420">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
@@ -51,5 +50,7 @@
 
   <Capabilities>
     <Capability Name="internetClient" />
+    <DeviceCapability Name="microphone"/>
+    <DeviceCapability Name="webcam"/>
   </Capabilities>
 </Package>
