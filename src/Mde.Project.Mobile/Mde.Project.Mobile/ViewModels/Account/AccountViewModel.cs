@@ -19,8 +19,13 @@ namespace Mde.Project.Mobile.ViewModels
             _accountService = accountService;
             Title = "My Account";
 
+            IsEdit = false;
+            IsRead = true;
+
             SaveProfileCommand = new AsyncCommand(SaveProfileAsync);
             TakePhotoCommand = new AsyncCommand(TakePhotoAsync);
+            EditCommand = new AsyncCommand(ChangeProfileState);
+            CancelCommand = new AsyncCommand(ChangeProfileState);
         }
 
         #region Properties
@@ -80,9 +85,25 @@ namespace Mde.Project.Mobile.ViewModels
             set => SetProperty(ref profilePicture, value);
         }
 
+        bool isEdit;
+        public bool IsEdit
+        {
+            get => isEdit;
+            set => SetProperty(ref isEdit, value);
+        }
+
+        bool isRead;
+        public bool IsRead
+        {
+            get => isRead;
+            set => SetProperty(ref isRead, value);
+        }
+
         public AsyncCommand SaveProfileCommand { get; }
         public AsyncCommand TakePhotoCommand { get; }
-       
+        public AsyncCommand EditCommand { get; }
+        public AsyncCommand CancelCommand { get; }
+
         #endregion
 
         #region Commands
@@ -100,41 +121,44 @@ namespace Mde.Project.Mobile.ViewModels
         async Task GetProfile()
         {
             var account = await _accountService.GetProfile();
-
-            //FileResult photo = new FileResult(account.AvatarPath);
+            var photoPath = await _accountService.GetProfilePicture();
 
             //await LoadPhotoAsync(photo);
 
-            if (account != null) SetProperties(account);
+            if (account != null) SetProperties(account, photoPath);
         }
 
-        void SetProperties(AccountModel account)
+        void SetProperties(AccountModel account, string photoPath)
         {
-            UserName = account.UserName;
             Email = account.Email;
             City = account.City;
             BirthDate = account.BirthDate;
             Address = account.Address;
             FullName = account.FullName;
             BattleNetId = account.BattleNetId;
-            ProfilePicture = (ImageSource)account.AvatarPath;
+            ProfilePicture = photoPath;
+        }
+        private async Task ChangeProfileState()
+        {
+            IsRead = !IsRead;
+            IsEdit = !IsEdit;
+            await Task.CompletedTask;
         }
         async Task SaveProfileAsync()
         {
             AccountModel currentAccount = new AccountModel
             {
-                UserName = UserName,
                 Email = Email,
                 City = City,
                 BirthDate = BirthDate,
                 Address = Address,
                 FullName = FullName,
-                BattleNetId = BattleNetId,
-                AvatarPath = ProfilePicture.ToString()
+                BattleNetId = BattleNetId
             };
 
             if(await _accountService.SaveProfile(currentAccount))
             {
+                await ChangeProfileState();
                 await Shell.Current.DisplayAlert("Success", "Your account info has been saved.", "OK");
             }
             else
@@ -148,10 +172,13 @@ namespace Mde.Project.Mobile.ViewModels
             try
             {
                 var photo = await MediaPicker.CapturePhotoAsync();
+                
+                if(photo != null)
+                {
+                    await LoadPhotoAsync(photo);
 
-                await LoadPhotoAsync(photo);
-
-                await Shell.Current.DisplayAlert("Success", "Your new profile picture is taken.", "OK");
+                    await Shell.Current.DisplayAlert("Success", "Your new profile picture is taken.", "OK");
+                }
             }
 
             catch (FeatureNotSupportedException fnsEx) 
@@ -185,9 +212,9 @@ namespace Mde.Project.Mobile.ViewModels
             using (var newStream = File.OpenWrite(newFile))
                 await stream.CopyToAsync(newStream);
 
-            ProfilePicture = newFile;
+            await _accountService.SaveProfilePicture(newFile);
 
-            await SaveProfileAsync();
+            ProfilePicture = newFile;
         }
     }
 }
