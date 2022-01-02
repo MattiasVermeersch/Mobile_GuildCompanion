@@ -1,4 +1,9 @@
-﻿using Mde.Project.Mobile.Pages;
+﻿using Autofac;
+using Mde.Project.Mobile.Domain.Interfaces;
+using Mde.Project.Mobile.Domain.Services;
+using Mde.Project.Mobile.IoC;
+using Mde.Project.Mobile.Pages;
+using Mde.Project.Mobile.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,11 +31,11 @@ namespace Mde.Project.Mobile
             Routing.RegisterRoute(nameof(AccountPage), typeof(AccountPage));
             #endregion
 
-        }
+            var viewModel = IoCResolver.Container.Resolve<ShellViewModel>();
 
-        private async void MenuItem_Clicked(object sender, EventArgs e)
-        {
-            await Current.GoToAsync($"//{nameof(LoginPage)}");
+            BindingContext = viewModel;
+
+            viewModel.RefreshCommand.ExecuteAsync();
         }
     }
 }
