@@ -49,7 +49,7 @@ namespace Mde.Project.Mobile.ViewModels
                 AllowTapInNotificationCenter = false,
                 AndroidOptions = new AndroidOptions()
                 {
-                    HexColor = "#00cb3b",
+                    HexColor = "#8cde95",
                     ForceOpenAppOnNotificationTap = true
                 }
             };
@@ -58,10 +58,6 @@ namespace Mde.Project.Mobile.ViewModels
             if(result.Action == NotificationAction.Clicked)
             {
                 await Shell.Current.DisplayAlert("Alert","You clicked to see your events.", "OK");
-            }
-            else
-            {
-                await Shell.Current.DisplayAlert("Alert", "You did not click to see your events.", "OK");
             }
         }
         #endregion
