@@ -8,14 +8,15 @@
         x:Class="Mde.Project.Mobile.Pages.EventsPage"
         Title="Events">
 
-    <TabBar Shell.TabBarBackgroundColor="DarkSeaGreen"
+    <TabBar Shell.TabBarBackgroundColor="Green"
             Shell.TabBarTitleColor="White"
-            Shell.TabBarUnselectedColor="Gray">
-        <Tab Title="PvE" Icon="">
+            Shell.TabBarUnselectedColor="Gray"
+            Shell.TabBarForegroundColor="Black">
+        <Tab Title="PvE">
             <ShellContent Title="Raids" ContentTemplate="{DataTemplate events:RaidsPage}"/>
             <ShellContent Title="Dungeons" ContentTemplate="{DataTemplate events:DungeonsPage}"/>
         </Tab>
-        <Tab Title="PvP" Icon="">
+        <Tab Title="PvP">
             <ShellContent Title="Arenas" ContentTemplate="{DataTemplate events:ArenasPage}"/>
             <ShellContent Title="Battlegrounds" ContentTemplate="{DataTemplate events:BattlegroundsPage}"/>
         </Tab>
