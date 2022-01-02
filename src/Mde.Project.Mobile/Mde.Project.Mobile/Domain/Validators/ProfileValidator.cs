@@ -6,13 +6,13 @@ using System.Text;
 
 namespace Mde.Project.Mobile.Domain.Validators
 {
-    public class ProfileValidator : AbstractValidator<DummyProfile>
+    public class ProfileValidator : AbstractValidator<AccountModel>
     {
         public ProfileValidator()
         {
-            RuleFor(p => p.Name)
+            RuleFor(p => p.Email)
                 .NotEmpty()
-                .WithMessage("The name cannot be empty.");
+                .WithMessage("The email cannot be empty.");
         }
     }
 }
