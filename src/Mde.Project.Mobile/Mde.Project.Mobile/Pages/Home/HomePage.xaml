@@ -9,18 +9,30 @@
         <ContentPage.Content>
         <ScrollView>
             <Grid>
-                <Image Source="emc_logo.jpg"
-                       Aspect="AspectFill"
-                       Opacity="0.2"/>
-                <StackLayout x:Name="homeLayout"
-                             Spacing="5">
-                    <Label Style="{StaticResource PageHeader}">PvE events</Label>
+                <StackLayout>
+                    <Grid RowSpacing="0">
+                        <Image Source="pve_banner.jpg"
+                               Grid.Row="0" Grid.Column="0"
+                               Style="{StaticResource ImageBanner}"/>
+                        <Label Text="PvE" 
+                               Grid.Row="0" Grid.Column="0"
+                               Style="{StaticResource ImageLabel}"
+                               FontFamily="{StaticResource WCFont}"/>
+                    </Grid>
                     <ListView x:Name="homePveEventsList"
                               HeightRequest="250">
 
                     </ListView>
 
-                    <Label Style="{StaticResource PageHeader}">PvP events</Label>
+                    <Grid RowSpacing="0">
+                        <Image Source="pvp_banner.jpg"
+                               Grid.Row="0" Grid.Column="0"
+                               Style="{StaticResource ImageBanner}"/>
+                        <Label Text="PvP" 
+                               Grid.Row="0" Grid.Column="0"
+                               Style="{StaticResource ImageLabel}"
+                               FontFamily="{StaticResource WCFont}"/>
+                    </Grid>
                     <ListView x:Name="homePvpEventsList"
                               HeightRequest="250">
                         
