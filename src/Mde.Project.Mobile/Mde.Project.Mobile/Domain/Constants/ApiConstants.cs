@@ -21,7 +21,7 @@ namespace Mde.Project.Mobile.Domain.Constants
         public static string ApiDungeonsUrl = $"{ApiBaseUrl}/Dungeons";
         public static string ApiRaidsUrl = $"{ApiBaseUrl}/Raids";
 
-        public static string Character = "/character";
+        public static string Character = "character";
 
         //token
         public static string TokenKey = "token";
