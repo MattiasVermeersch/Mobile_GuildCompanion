@@ -15,7 +15,7 @@ namespace Mde.Project.Mobile.Domain.Services
             new DungeonModel
             {
                 Id = "10",
-                Name = "De Other Side",
+                InstanceName = "De Other Side",
                 Date = DateTime.Now,
                 Difficulty = "Heroic",
                 Success = true
@@ -23,7 +23,7 @@ namespace Mde.Project.Mobile.Domain.Services
             new DungeonModel
             {
                 Id = "11",
-                Name = "Halls of Atonement",
+                InstanceName = "Halls of Atonement",
                 Date = new DateTime(2021, 03, 21),
                 Difficulty = "Normal",
                 Success = true
@@ -31,7 +31,7 @@ namespace Mde.Project.Mobile.Domain.Services
             new DungeonModel
             {
                 Id = "12",
-                Name = "Spires of Ascension",
+                InstanceName = "Spires of Ascension",
                 Date = new DateTime(2021, 04, 21),
                 Difficulty = "Mythic",
                 Key = 5,
@@ -39,14 +39,44 @@ namespace Mde.Project.Mobile.Domain.Services
             }
         };
 
+        public Task<DungeonModel> AddAsync(DungeonModel entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<DungeonModel> AddCharacterToInstance(string id, CharacterModel character)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<DungeonModel> DeleteAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<IEnumerable<DungeonModel>> GetAll()
         {
             return Task.FromResult(dungeonEvents.AsEnumerable());
         }
 
+        public Task<IEnumerable<DungeonModel>> GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<DungeonModel> GetById(string id)
         {
             return (await GetAll()).FirstOrDefault(d => d.Id.Equals(id));
+        }
+
+        public Task<DungeonModel> GetByIdAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<DungeonModel> UpdateAsync(DungeonModel entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

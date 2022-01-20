@@ -90,5 +90,30 @@ namespace Mde.Project.Mobile.Domain.Services
         {
             return (await GetCharacters()).FirstOrDefault(c => c.Id.Equals(id));
         }
+
+        public Task<IEnumerable<CharacterModel>> GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<CharacterModel> GetByIdAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<CharacterModel> AddAsync(CharacterModel entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<CharacterModel> UpdateAsync(CharacterModel entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<CharacterModel> DeleteAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

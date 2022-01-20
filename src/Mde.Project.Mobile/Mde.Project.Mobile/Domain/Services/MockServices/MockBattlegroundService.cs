@@ -15,38 +15,68 @@ namespace Mde.Project.Mobile.Domain.Services
             new BattlegroundModel
             {
                 Id = "51",
-                Name = "Warsong Gulch",
+                InstanceName = "Warsong Gulch",
                 Date = new DateTime(2021, 06, 17),
                 IsWon = true
             },
             new BattlegroundModel
             {
                 Id = "52",
-                Name = "Eye of the Storm",
+                InstanceName = "Eye of the Storm",
                 Date = new DateTime(2021, 06, 17)
             },
             new BattlegroundModel
             {
                 Id = "53",
-                Name = "Battle for Gilneas",
+                InstanceName = "Battle for Gilneas",
                 Date = new DateTime(2021, 06, 17)
             },
             new BattlegroundModel
             {
                 Id = "54",
-                Name = "Temple of Kotmogu",
+                InstanceName = "Temple of Kotmogu",
                 Date = new DateTime(2021, 06, 17)
             }
         };
+
+        public Task<BattlegroundModel> AddAsync(BattlegroundModel entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<BattlegroundModel> AddCharacterToInstance(string id, CharacterModel character)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<BattlegroundModel> DeleteAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
 
         public Task<IEnumerable<BattlegroundModel>> GetAll()
         {
             return Task.FromResult(battlegroundEvents.AsEnumerable());
         }
 
+        public Task<IEnumerable<BattlegroundModel>> GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<BattlegroundModel> GetById(string id)
         {
             return (await GetAll()).FirstOrDefault(b => b.Id.Equals(id));
+        }
+
+        public Task<BattlegroundModel> GetByIdAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<BattlegroundModel> UpdateAsync(BattlegroundModel entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

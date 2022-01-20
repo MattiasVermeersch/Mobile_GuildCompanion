@@ -15,41 +15,71 @@ namespace Mde.Project.Mobile.Domain.Services
             new ArenaModel
             {
                 Id = "41",
-                Name = "Circle of Blood",
+                InstanceName = "Circle of Blood",
                 Date = new DateTime(2021, 06, 21),
                 Mode = "2v2",
             },
             new ArenaModel
             {
                 Id = "42",
-                Name = "Hook Point",
+                InstanceName = "Hook Point",
                 Date = new DateTime(2021, 06, 21),
                 Mode = "2v2",
             },
             new ArenaModel
             {
                 Id = "43",
-                Name = "Tol'Viron",
+                InstanceName = "Tol'Viron",
                 Date = new DateTime(2021, 06, 21),
                 Mode = "2v2",
             },
             new ArenaModel
             {
                 Id = "44",
-                Name = "Ashamane's Fall",
+                InstanceName = "Ashamane's Fall",
                 Date = new DateTime(2021, 06, 21),
                 Mode = "2v2",
             }
         };
+
+        public Task<ArenaModel> AddAsync(ArenaModel entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ArenaModel> AddCharacterToInstance(string id, CharacterModel character)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ArenaModel> DeleteAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
 
         public Task<IEnumerable<ArenaModel>> GetAll()
         {
             return Task.FromResult(arenaEvents.AsEnumerable());
         }
 
+        public Task<IEnumerable<ArenaModel>> GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<ArenaModel> GetById(string id)
         {
             return (await GetAll()).FirstOrDefault(a => a.Id.Equals(id));
+        }
+
+        public Task<ArenaModel> GetByIdAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ArenaModel> UpdateAsync(ArenaModel entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }
