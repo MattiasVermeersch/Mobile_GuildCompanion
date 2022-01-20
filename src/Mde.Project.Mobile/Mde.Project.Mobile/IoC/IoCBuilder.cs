@@ -80,16 +80,21 @@ namespace Mde.Project.Mobile.IoC
             #region Services
             //register the ApiServices
             RegisterType<IAuthService, AuthService>();
+            RegisterType<ICharactersService, ApiCharacterService>();
+            RegisterType<IArenaService, ApiArenaService>();
+            RegisterType<IBattlegroundService, ApiBattlegroundService>();
+            RegisterType<IDungeonService, ApiDungeonService>();
+            RegisterType<IRaidService, ApiRaidService>();
 
             //register the MockServices
-            RegisterType<ICharactersService, MockCharactersService>();
+            //RegisterType<ICharactersService, MockCharactersService>();
+            //RegisterType<IEventService<ArenaModel> ,MockArenaService>();
+            //RegisterType<IEventService<BattlegroundModel>, MockBattlegroundService>();
+            //RegisterType<IEventService<DungeonModel>, MockDungeonService>();
+            //RegisterType<IEventService<RaidModel>,MockRaidService>();
 
-            RegisterType<IEventService<ArenaModel> ,MockArenaService>();
-            RegisterType<IEventService<BattlegroundModel>, MockBattlegroundService>();
-            RegisterType<IEventService<DungeonModel>, MockDungeonService>();
-            RegisterType<IEventService<RaidModel>,MockRaidService>();
-
-            RegisterType<IAccountService, MockAccountService>();
+            //register local services
+            RegisterType<IAccountService, AccountService>();
             #endregion
 
             return containerBuilder;
