@@ -51,7 +51,7 @@ namespace Mde.Project.Mobile.ViewModels
 
         public async Task GetCharactersList()
         {
-            Characters = await _characterService.GetCharacters();
+            Characters = await _characterService.GetAllAsync();
         }
         #endregion
     }

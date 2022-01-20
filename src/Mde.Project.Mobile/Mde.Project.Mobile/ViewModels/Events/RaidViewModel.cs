@@ -10,9 +10,9 @@ namespace Mde.Project.Mobile.ViewModels
 {
     public class RaidViewModel : ViewModelBase
     {
-        private readonly IEventService<RaidModel> _raidService;
+        private readonly IRaidService _raidService;
 
-        public RaidViewModel(IEventService<RaidModel> raidService)
+        public RaidViewModel(IRaidService raidService)
         {
             _raidService = raidService;
             Title = "PvE";
@@ -51,7 +51,7 @@ namespace Mde.Project.Mobile.ViewModels
 
         async Task GetRaidsList()
         {
-            Raids = await _raidService.GetAll();
+            Raids = await _raidService.GetAllAsync();
         }
         #endregion
     }

@@ -9,8 +9,8 @@ namespace Mde.Project.Mobile.ViewModels
 {
     public class DungeonViewModel : ViewModelBase
     {
-        private readonly IEventService<DungeonModel> _dungeonService;
-        public DungeonViewModel(IEventService<DungeonModel> dungeonService)
+        private readonly IDungeonService _dungeonService;
+        public DungeonViewModel(IDungeonService dungeonService)
         {
             _dungeonService = dungeonService;
             Title = "PvE";
@@ -49,7 +49,7 @@ namespace Mde.Project.Mobile.ViewModels
 
         async Task GetdungeonsList()
         {
-            Dungeons = await _dungeonService.GetAll();
+            Dungeons = await _dungeonService.GetAllAsync();
         }
         #endregion
     }

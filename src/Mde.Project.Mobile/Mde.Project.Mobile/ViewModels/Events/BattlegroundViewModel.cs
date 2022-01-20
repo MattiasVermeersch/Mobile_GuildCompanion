@@ -10,8 +10,8 @@ namespace Mde.Project.Mobile.ViewModels
 {
     public class BattlegroundViewModel : ViewModelBase
     {
-        private readonly IEventService<BattlegroundModel> _battlegroundService;
-        public BattlegroundViewModel(IEventService<BattlegroundModel> battlegroundService)
+        private readonly IBattlegroundService _battlegroundService;
+        public BattlegroundViewModel(IBattlegroundService battlegroundService)
         {
             _battlegroundService = battlegroundService;
             Title = "PvP";
@@ -50,7 +50,7 @@ namespace Mde.Project.Mobile.ViewModels
 
         async Task GetBattlegroundsList()
         {
-            Battlegrounds = await _battlegroundService.GetAll();
+            Battlegrounds = await _battlegroundService.GetAllAsync();
         }
         #endregion
     }

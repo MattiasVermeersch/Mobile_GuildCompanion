@@ -10,9 +10,9 @@ namespace Mde.Project.Mobile.ViewModels
 {
     public class ArenaViewModel : ViewModelBase
     {
-        private readonly IEventService<ArenaModel> _arenaService;
+        private readonly IArenaService _arenaService;
 
-        public ArenaViewModel(IEventService<ArenaModel> arenaService)
+        public ArenaViewModel(IArenaService arenaService)
         {
             _arenaService = arenaService;
             Title = "PvP";
@@ -51,7 +51,11 @@ namespace Mde.Project.Mobile.ViewModels
 
         async Task GetArenasList()
         {
-            Arenas = await _arenaService.GetAll();
+            Arenas = await _arenaService.GetAllAsync();
+            foreach(var arena in Arenas)
+            {
+                arena.InstanceName = $"{arena.Mode}v{arena.Mode}";
+            }
         }
         #endregion
     }
