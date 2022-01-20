@@ -4,9 +4,7 @@ using System.Threading.Tasks;
 
 namespace Mde.Project.Mobile.Domain.Interfaces
 {
-    public interface ICharactersService
+    public interface ICharactersService : IBaseService<CharacterModel>
     {
-        Task<CharacterModel> GetCharacterById(string characterId);
-        Task<IEnumerable<CharacterModel>> GetCharacters();
     }
 }
