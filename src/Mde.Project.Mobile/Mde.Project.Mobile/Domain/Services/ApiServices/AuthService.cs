@@ -31,7 +31,7 @@ namespace Mde.Project.Mobile.Domain.Services
                     password
                 };
 
-                var result = await ApiClient.PostAsync<LoginModel>(ApiConstants.ApiLoginUrl, loginRequest);
+                var result = await ApiClient.PostAsync<LoginModel>(ApiConstants.ApiLoginUrl, loginRequest, false);
 
                 if (result.SignInSucceeded)
                     await SecureStorage.SetAsync(ApiConstants.TokenKey, result.Token);
@@ -79,7 +79,7 @@ namespace Mde.Project.Mobile.Domain.Services
                     birthDate
                 };
 
-                var result = await ApiClient.PostAsync<RegisterModel>(ApiConstants.ApiRegisterUrl, registerRequest);
+                var result = await ApiClient.PostAsync<RegisterModel>(ApiConstants.ApiRegisterUrl, registerRequest, false);
 
                 if (result.Error != null)
                 {
