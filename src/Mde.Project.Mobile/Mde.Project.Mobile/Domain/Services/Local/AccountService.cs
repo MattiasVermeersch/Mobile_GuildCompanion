@@ -12,7 +12,7 @@ using System.Diagnostics;
 
 namespace Mde.Project.Mobile.Domain.Services
 {
-    public class MockAccountService : IAccountService
+    public class AccountService : IAccountService
     {
         protected static string accountSettingsPath = Path.Combine(FileSystem.AppDataDirectory, AppConstants.AccountSettingsFileName);
         protected static string profilePicPath = Path.Combine(FileSystem.AppDataDirectory, AppConstants.ProfilePicFileName);
