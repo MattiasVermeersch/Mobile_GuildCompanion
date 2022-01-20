@@ -4,10 +4,9 @@ using System.Threading.Tasks;
 
 namespace Mde.Project.Mobile.Domain.Interfaces
 {
-    public interface IEventService<T>
+    public interface IEventService<T> : IBaseService<T>
         where T : EventModelBase
     {
-        Task<IEnumerable<T>> GetAll();
-        Task<T> GetById(string id);
+        Task<T> AddCharacterToInstance(string id, CharacterModel character);
     }
 }
