@@ -115,5 +115,10 @@ namespace Mde.Project.Mobile.Domain.Services
         {
             throw new NotImplementedException();
         }
+
+        public Task<IEnumerable<CharacterModel>> GetCharactersByUserIdAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -16,25 +16,19 @@ namespace Mde.Project.Mobile.Domain.Services
             {
                 Id ="20",
                 InstanceName =  "Sanctum of Domination",
-                Date = new DateTime(2021, 04, 10),
-                Bosses = 12,
-                BossesDown = 11
+                Date = new DateTime(2021, 04, 10)
             },
             new RaidModel
             {
                 Id ="21",
                 InstanceName =  "Sanctum of Domination",
-                Date = new DateTime(2021, 04, 17),
-                Bosses = 12,
-                BossesDown = 11
+                Date = new DateTime(2021, 04, 17)
             },
             new RaidModel
             {
                 Id ="23",
                 InstanceName =  "Sanctum of Domination",
-                Date = new DateTime(2021, 04, 24),
-                Bosses = 12,
-                BossesDown = 12
+                Date = new DateTime(2021, 04, 24)
             }
         };
 
@@ -69,6 +63,11 @@ namespace Mde.Project.Mobile.Domain.Services
         }
 
         public Task<RaidModel> GetByIdAsync(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<RaidModel> RemoveCharacterFromInstance(string eventId, string characterId)
         {
             throw new NotImplementedException();
         }

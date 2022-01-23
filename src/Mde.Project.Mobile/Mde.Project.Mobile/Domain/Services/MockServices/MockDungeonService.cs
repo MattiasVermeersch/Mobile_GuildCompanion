@@ -74,6 +74,11 @@ namespace Mde.Project.Mobile.Domain.Services
             throw new NotImplementedException();
         }
 
+        public Task<DungeonModel> RemoveCharacterFromInstance(string eventId, string characterId)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<DungeonModel> UpdateAsync(DungeonModel entity)
         {
             throw new NotImplementedException();
