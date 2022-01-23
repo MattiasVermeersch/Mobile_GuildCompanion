@@ -64,11 +64,14 @@ namespace Mde.Project.Mobile.IoC
             RegisterType<ShellViewModel>();
 
             RegisterType<CharacterViewModel>();
+            RegisterType<CharacterDetailViewModel>();
 
             RegisterType<ArenaViewModel>();
             RegisterType<BattlegroundViewModel>();
             RegisterType<DungeonViewModel>();
             RegisterType<RaidViewModel>();
+            RegisterType<PersonalEventsViewModel>();
+            RegisterType<EventDetailViewModel>();
 
             RegisterType<HomeViewModel>();
 
@@ -81,6 +84,7 @@ namespace Mde.Project.Mobile.IoC
             //register the ApiServices
             RegisterType<IAuthService, AuthService>();
             RegisterType<ICharactersService, ApiCharacterService>();
+            RegisterType<IAllEventsService, ApiAllEventsService>();
             RegisterType<IArenaService, ApiArenaService>();
             RegisterType<IBattlegroundService, ApiBattlegroundService>();
             RegisterType<IDungeonService, ApiDungeonService>();
