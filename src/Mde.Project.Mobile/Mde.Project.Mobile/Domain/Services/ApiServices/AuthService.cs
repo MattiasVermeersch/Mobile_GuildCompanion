@@ -34,7 +34,11 @@ namespace Mde.Project.Mobile.Domain.Services
                 var result = await ApiClient.PostAsync<LoginModel>(ApiConstants.ApiLoginUrl, loginRequest, false);
 
                 if (result.SignInSucceeded)
+                {
                     await SecureStorage.SetAsync(ApiConstants.TokenKey, result.Token);
+                    await SecureStorage.SetAsync(ApiConstants.UserKey, result.UserId);
+                }
+                    
 
                 return result.SignInSucceeded;
             }
