@@ -2,11 +2,20 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:Mde.Project.Mobile.ViewModels"
+             xmlns:models="clr-namespace:Mde.Project.Mobile.Domain.Models"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="Mde.Project.Mobile.Pages.HomePage"
              Title="{Binding Title}"
              x:DataType="viewmodels:HomeViewModel">
 
-        <ContentPage.Content>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter"/>
+            <xct:InvertedBoolConverter x:Key="InvertBool"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
         <ScrollView>
             <Grid>
                 <StackLayout>
@@ -19,10 +28,55 @@
                                Style="{StaticResource ImageLabel}"
                                FontFamily="{StaticResource WCFont}"/>
                     </Grid>
-                    <ListView x:Name="homePveEventsList"
-                              HeightRequest="250">
+                    <ListView 
+                        SelectedItem="{Binding SelectedEvent, Mode=TwoWay}"
+                        HasUnevenRows="False"
+                        RowHeight="45"
+                        RefreshCommand="{Binding RefreshCommand}"
+                        RefreshControlColor="Green"
+                        IsPullToRefreshEnabled="True"
+                        SeparatorColor="Green"
+                        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                        ItemsSource="{Binding PveEvents}"
+                        IsVisible="{Binding HasPveEvents}">  
+                        <ListView.Behaviors>
+                            <xct:EventToCommandBehavior
+                                EventName="ItemSelected"
+                                Command="{Binding SelectedCommand}"
+                                EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}"/>
+                        </ListView.Behaviors>
 
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="models:EventListItemModel">
+                                <ViewCell>
+                                    <StackLayout
+                                        Padding="20, 10"
+                                        Orientation="Horizontal">
+                                        <Label Text="{Binding Name}" 
+                                            TextColor="Black"
+                                            HorizontalOptions="StartAndExpand"/>
+                                        <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy @ hh:mm}'}"
+                                            TextColor="Black"
+                                            HorizontalOptions="End"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
                     </ListView>
+                    <AbsoluteLayout 
+                        Padding="0"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        IsVisible="{Binding HasPveEvents, Converter={StaticResource InvertBool}}">
+                        <StackLayout 
+                            Padding="10"
+                            AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" 
+                            AbsoluteLayout.LayoutFlags="PositionProportional">
+                            <Label Text="There are no PvE events today."
+                                   TextColor="Black"
+                                   VerticalOptions="Center"/>
+                        </StackLayout>
+                    </AbsoluteLayout>
 
                     <Grid RowSpacing="0">
                         <Image Source="pvp_banner.jpg"
@@ -33,10 +87,55 @@
                                Style="{StaticResource ImageLabel}"
                                FontFamily="{StaticResource WCFont}"/>
                     </Grid>
-                    <ListView x:Name="homePvpEventsList"
-                              HeightRequest="250">
-                        
+                    <ListView 
+                        SelectedItem="{Binding SelectedEvent, Mode=TwoWay}"
+                        HasUnevenRows="False"
+                        RowHeight="45"
+                        RefreshCommand="{Binding RefreshCommand}"
+                        RefreshControlColor="Green"
+                        IsPullToRefreshEnabled="True"
+                        SeparatorColor="Green"
+                        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                        ItemsSource="{Binding PvpEvents}"
+                        IsVisible="{Binding HasPvpEvents}">
+                        <ListView.Behaviors>
+                            <xct:EventToCommandBehavior
+                                EventName="ItemSelected"
+                                Command="{Binding SelectedCommand}"
+                                EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}"/>
+                        </ListView.Behaviors>
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="models:EventListItemModel">
+                                <ViewCell>
+                                    <StackLayout
+                                        Padding="20, 10"
+                                        Orientation="Horizontal">
+                                        <Label Text="{Binding Name}" 
+                                            TextColor="Black"
+                                            HorizontalOptions="StartAndExpand"/>
+                                        <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy @ hh:mm}'}"
+                                            TextColor="Black"
+                                            HorizontalOptions="End"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
                     </ListView>
+                    <AbsoluteLayout 
+                        Padding="0"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        IsVisible="{Binding HasPvpEvents, Converter={StaticResource InvertBool}}">
+                        <StackLayout 
+                            Padding="10"
+                            AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" 
+                            AbsoluteLayout.LayoutFlags="PositionProportional">
+                            <Label Text="There are no PvP events today."
+                                   TextColor="Black"
+                                   VerticalOptions="Center"/>
+                        </StackLayout>
+                    </AbsoluteLayout>
                 </StackLayout>
             </Grid>
         </ScrollView>

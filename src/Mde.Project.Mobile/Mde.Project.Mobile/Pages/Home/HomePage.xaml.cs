@@ -23,7 +23,13 @@ namespace Mde.Project.Mobile.Pages
 
             BindingContext = viewModel;
 
-            viewModel.RefreshCommand.ExecuteAsync();
+            //call notification only when viewmodel is first loaded
+            viewModel.NotificationCommand.ExecuteAsync();
+        }
+
+        protected override void OnAppearing()
+        {
+            (BindingContext as HomeViewModel).RefreshCommand.ExecuteAsync();
         }
     }
 }
