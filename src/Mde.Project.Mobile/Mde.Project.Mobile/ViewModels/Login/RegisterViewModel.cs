@@ -16,6 +16,7 @@ namespace Mde.Project.Mobile.ViewModels
         {
             _authService = authService;
             Title = "Register here";
+            IsBusy = false;
 
             //Commands
             SubmitCommand = new AsyncCommand(SubmitRegistration);
@@ -98,6 +99,7 @@ namespace Mde.Project.Mobile.ViewModels
 
         async Task SubmitRegistration()
         {
+            IsBusy = true;
             if (string.IsNullOrWhiteSpace(FirstName) ||
                 string.IsNullOrWhiteSpace(LastName) ||
                 string.IsNullOrWhiteSpace(Email) ||
@@ -105,12 +107,16 @@ namespace Mde.Project.Mobile.ViewModels
                 string.IsNullOrWhiteSpace(ConfirmPassword))
             {
                 await App.Current.MainPage.DisplayAlert("Error", "All entries need to be filled in!", "OK");
+                IsBusy = false;
                 return;
             }
                     
-            if (Password != ConfirmPassword) 
+            if (Password != ConfirmPassword)
+            {
                 await App.Current.MainPage.DisplayAlert("Error", "The passwords need to match!", "OK");
-
+                IsBusy = false;
+            }
+                
             else
             {
                 //Save the information through API call here then Login and navigate to HomePage
