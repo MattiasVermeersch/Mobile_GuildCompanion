@@ -59,6 +59,24 @@
         <ShellContent ContentTemplate="{DataTemplate pages:EventsPage}" Route="EventsPage"/>
     </FlyoutItem>
 
+    <FlyoutItem Title="My Events">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="FAR" 
+                             Glyph="{x:Static fa:FontAwesomeIcons.CalendarAlt}" 
+                             Color="Green"/>
+        </FlyoutItem.Icon>
+        <Shell.FlyoutBackdrop>
+            <LinearGradientBrush StartPoint="0,0"
+                               EndPoint="1,1">
+                <GradientStop Color="DarkGreen"
+                            Offset="0.3" />
+                <GradientStop Color="Gold"
+                            Offset="1.0" />
+            </LinearGradientBrush>
+        </Shell.FlyoutBackdrop>
+        <ShellContent ContentTemplate="{DataTemplate pages:PersonalEventsPage}" Route="PersonalEventsPage"/>
+    </FlyoutItem>
+
     <FlyoutItem Title="Characters">
         <FlyoutItem.Icon>
             <FontImageSource FontFamily="FAS" 
