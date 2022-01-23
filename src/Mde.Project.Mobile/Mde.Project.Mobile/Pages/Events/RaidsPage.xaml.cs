@@ -16,8 +16,11 @@ namespace Mde.Project.Mobile.Pages
             var viewModel = IoCResolver.Container.Resolve<RaidViewModel>();
 
             BindingContext = viewModel;
+        }
 
-            viewModel.RefreshCommand.ExecuteAsync();
+        protected override void OnAppearing()
+        {
+            (BindingContext as RaidViewModel).RefreshCommand.ExecuteAsync();
         }
     }
 }
