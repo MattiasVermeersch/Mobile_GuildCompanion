@@ -1,12 +1,90 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mde.Project.Mobile.Pages.DetailEventPage">
+             xmlns:viewmodels="clr-namespace:Mde.Project.Mobile.ViewModels"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:convert="clr-namespace:Mde.Project.Mobile.Domain.Converters"
+             x:Class="Mde.Project.Mobile.Pages.DetailEventPage"
+             x:DataType="viewmodels:EventDetailViewModel"
+             Title="{Binding Title}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:InvertedBoolConverter x:Key="InvertBool"/>
+            <convert:NullToBoolConverter x:Key="InvertNull"/>
+            <convert:EmptyCollectionToBoolConverter x:Key="InvertEmptyCollection"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Style="{StaticResource FormLayout}">
+
+                <Label Style="{StaticResource PageHeader}"
+                    Text="{Binding PageTitle}"/>
+                    
+                <Label Text="Mode"
+                       Style="{StaticResource FormLabel}"
+                       IsVisible="{Binding IsArena}"/>
+                <Label Text="Instance Name"
+                       Style="{StaticResource FormLabel}"
+                       IsVisible="{Binding IsArena, Converter={StaticResource InvertBool}}"/>
+                
+                
+                <Label Text="{Binding InstanceName}"
+                        Style="{StaticResource InfoLabel}"/>
+
+                <Label Text="Date"
+                        Style="{StaticResource FormLabel}"/>
+                <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy @ hh:mm}'}"
+                        Style="{StaticResource InfoLabel}"/>
+
+                <Label Text="Difficulty"
+                       Style="{StaticResource FormLabel}"
+                       IsVisible="{Binding IsRaid}"/>
+                <Label Text="{Binding Difficulty}"
+                       Style="{StaticResource InfoLabel}"
+                       IsVisible="{Binding IsRaid}"/>
+                
+                <Label Text="Difficulty"
+                       Style="{StaticResource FormLabel}"
+                       IsVisible="{Binding IsDungeon}"/>
+                <Label Text="{Binding Difficulty}"
+                       Style="{StaticResource InfoLabel}"
+                       IsVisible="{Binding IsDungeon}"/>
+
+                <Label Text="Key"
+                       Style="{StaticResource FormLabel}"
+                       IsVisible="{Binding Key, Converter={StaticResource InvertNull}}"/>
+                <Label Text="{Binding Key}"
+                       Style="{StaticResource InfoLabel}"
+                       IsVisible="{Binding Key, Converter={StaticResource InvertNull}}"/>
+
+                <Label Text="Subscribe to this event"
+                       Style="{StaticResource FormLabel}"/>
+                <Picker Title="Select the character you want to join with"
+                        ItemsSource="{Binding PlayerCharacters}"
+                        ItemDisplayBinding="{Binding Name}"
+                        SelectedItem="{Binding SelectedCharacter}"
+                        IsVisible="{Binding CanSubscribe}"/>
+                <Button Text="Subscribe"
+                        Style="{StaticResource SuccessButton}"
+                        IsVisible="{Binding CanSubscribe}"
+                        Command="{Binding SelectedCommand}"/>
+
+                <Label Text="You don't have any characters added in the app yet!"
+                       Style="{StaticResource ErrorLabel}"
+                       IsVisible="{Binding PlayerCharacters, Converter={StaticResource InvertEmptyCollection}}"/>
+                
+                <Label Text="{Binding SubscribedCharacter}"
+                       Style="{StaticResource InfoLabel}"
+                       IsVisible="{Binding CanSubscribe, Converter={StaticResource InvertBool}}"/>
+                <Button Text="UnSubscribe"
+                        Style="{StaticResource DangerButton}"
+                        IsVisible="{Binding CanSubscribe, Converter={StaticResource InvertBool}}"
+                        Command="{Binding UnSubscribeCommand}"/>
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
