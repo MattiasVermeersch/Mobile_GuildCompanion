@@ -6,5 +6,6 @@ namespace Mde.Project.Mobile.Domain.Interfaces
 {
     public interface ICharactersService : IBaseService<CharacterModel>
     {
+        Task<IEnumerable<CharacterModel>> GetCharactersByUserIdAsync();
     }
 }
