@@ -3,16 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:Mde.Project.Mobile.ViewModels"
              xmlns:models="clr-namespace:Mde.Project.Mobile.Domain.Models"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="Mde.Project.Mobile.Pages.CharactersPage"
              x:DataType="viewmodels:CharacterViewModel"
              Title="{Binding Title}">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add"/>
+        <ToolbarItem Text="Add"
+                     Command="{Binding AddCommand}"/>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
-        <ListView 
+        <StackLayout>
+            <ListView 
             SelectedItem="{Binding SelectedCharacter, Mode=TwoWay}"
             HasUnevenRows="False"
             RowHeight="45"
@@ -21,23 +30,48 @@
             IsPullToRefreshEnabled="True"
             SeparatorColor="Green"
             IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-            ItemsSource="{Binding Characters}">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:CharacterModel">
-                    <ViewCell>
-                        <StackLayout
-                            Padding="10, 10"
+            ItemsSource="{Binding Characters}"
+            IsVisible="{Binding HasData}">
+                <ListView.Behaviors>
+                    <xct:EventToCommandBehavior
+                    EventName="ItemSelected"
+                    Command="{Binding SelectedCommand}"
+                    EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}"/>
+                </ListView.Behaviors>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:CharacterModel">
+                        <ViewCell>
+                            <StackLayout
+                            Padding="20, 10"
                             Orientation="Horizontal">
-                            <Label Text="{Binding Name}" 
+                                <Label Text="{Binding Name}" 
                                 TextColor="Black"
                                 HorizontalOptions="StartAndExpand"/>
-                            <Label Text="{Binding Level}"
+                                <Label Text="{Binding Level}"
                                 TextColor="Black"
                                 HorizontalOptions="End"/>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <AbsoluteLayout 
+                Padding="0"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <StackLayout 
+                    Padding="10"
+                    IsVisible="{Binding HasNoData}"
+                    AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" 
+                    AbsoluteLayout.LayoutFlags="PositionProportional">
+                    <Label Text="You don't have any characters in the app."
+                           TextColor="Black"
+                           VerticalOptions="Center"/>
+                </StackLayout>
+            </AbsoluteLayout>
+
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

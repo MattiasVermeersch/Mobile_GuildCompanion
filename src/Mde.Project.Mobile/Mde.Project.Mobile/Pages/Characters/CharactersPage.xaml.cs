@@ -19,5 +19,10 @@ namespace Mde.Project.Mobile.Pages
 
             viewModel.RefreshCommand.ExecuteAsync();
         }
+
+        protected override void OnAppearing()
+        {
+            (BindingContext as CharacterViewModel).RefreshCommand.ExecuteAsync();
+        }
     }
 }
