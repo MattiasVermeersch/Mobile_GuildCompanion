@@ -7,7 +7,7 @@ namespace Mde.Project.Mobile.Domain.Constants
     public static class ApiConstants
     {
         //URL's
-        public static string ApiBaseUrl = "https://localhost:8001/api";
+        public static string ApiBaseUrl = "http://192.168.0.152:5000/api";
 
         public static string ApiLoginUrl = $"{ApiBaseUrl}/Auth/login";
         public static string ApiRegisterUrl = $"{ApiBaseUrl}/Auth/register";
@@ -22,8 +22,10 @@ namespace Mde.Project.Mobile.Domain.Constants
         public static string ApiRaidsUrl = $"{ApiBaseUrl}/Raids";
 
         public static string Character = "character";
+        public static string Characters = "characters";
 
-        //token
+        //For Secure Storage
         public static string TokenKey = "token";
+        public static string UserKey = "userId";
     }
 }
