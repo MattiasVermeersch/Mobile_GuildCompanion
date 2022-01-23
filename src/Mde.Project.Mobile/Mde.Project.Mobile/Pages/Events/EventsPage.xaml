@@ -10,7 +10,7 @@
 
     <TabBar Shell.TabBarBackgroundColor="Green"
             Shell.TabBarTitleColor="White"
-            Shell.TabBarUnselectedColor="Gray"
+            Shell.TabBarUnselectedColor="LightGray"
             Shell.TabBarForegroundColor="Black">
         <Tab Title="PvE">
             <ShellContent Title="Raids" ContentTemplate="{DataTemplate events:RaidsPage}"/>
