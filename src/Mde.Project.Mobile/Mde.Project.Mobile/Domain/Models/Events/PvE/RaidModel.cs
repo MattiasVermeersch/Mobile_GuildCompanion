@@ -6,7 +6,6 @@ namespace Mde.Project.Mobile.Domain.Models
 {
     public class RaidModel : EventModelBase
     {
-        public int Bosses { get; set; }
-        public int BossesDown { get; set; }
+        public string Difficulty { get; set; }
     }
 }
