@@ -36,7 +36,7 @@ namespace Imi.Project.Api.Infrastructure.Repositories
         public async Task<Battleground> AddCharacterAsync(Guid id, Character character)
         {
             var battleground = _dbContext.Battlegrounds.Find(id);
-            var characterToAdd = _dbContext.Characters.Find(id);
+            var characterToAdd = _dbContext.Characters.Find(character.Id);
 
             battleground.BattlegroundCharacters = new List<BattlegroundCharacter>();
 
