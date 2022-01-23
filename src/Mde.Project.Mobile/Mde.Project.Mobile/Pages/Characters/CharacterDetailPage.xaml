@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:Mde.Project.Mobile.ViewModels"
+             x:Class="Mde.Project.Mobile.Pages.CharacterDetailPage"
+             x:DataType="viewmodels:CharacterDetailViewModel"
+             Title="{Binding Title}">
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Style="{StaticResource FormLayout}">
+                <Label Style="{StaticResource PageHeader}"
+                       Text="{Binding PageTitle}"/>
+
+                <Label Text="Name"
+                       Style="{StaticResource FormLabel}"/>
+                <Label Text="{Binding Name}" IsVisible="{Binding IsRead}"
+                       TextColor="Black"/>
+                <Entry Text="{Binding Name}" IsVisible="{Binding IsEdit}"
+                       Keyboard="Text"
+                       Placeholder="Character's name..."/>
+                <Label Text="{Binding NameError}"
+                       Style="{StaticResource ErrorLabel}"
+                       IsVisible="{Binding NameErrorIsVisible}"/>
+
+                <Label Text="Class"
+                       Style="{StaticResource FormLabel}"/>
+                <Label Text="{Binding SelectedClass}" IsVisible="{Binding IsRead}"
+                       TextColor="Black"/>
+                <Picker Title="Select a class"
+                        ItemsSource="{Binding Classes}"
+                        SelectedItem="{Binding SelectedClass}"
+                        IsVisible="{Binding IsEdit}"/>
+                <Label Text="{Binding ClassError}"
+                       Style="{StaticResource ErrorLabel}"
+                       IsVisible="{Binding ClassErrorIsVisible}"/>
+
+                <Label Text="Role"
+                       Style="{StaticResource FormLabel}"/>
+                <Label Text="{Binding SelectedRole}" IsVisible="{Binding IsRead}"
+                       TextColor="Black"/>
+                <Picker Title="Select a role for your class" 
+                        ItemsSource="{Binding Roles}"
+                        SelectedItem="{Binding SelectedRole}"
+                        IsVisible="{Binding IsEdit}"/>
+                <Label Text="{Binding RoleError}"
+                       Style="{StaticResource ErrorLabel}"
+                       IsVisible="{Binding RoleErrorIsVisible}"/>
+
+                <Label Text="Level"
+                       Style="{StaticResource FormLabel}"/>
+                <Label Text="{Binding Level}" IsVisible="{Binding IsRead}"
+                       TextColor="Black"/>
+                <Entry Text="{Binding Level}" IsVisible="{Binding IsEdit}"
+                       Keyboard="Numeric"/>
+                <Label Text="{Binding LevelError}"
+                       Style="{StaticResource ErrorLabel}"
+                       IsVisible="{Binding LevelErrorIsVisible}"/>
+
+                <Label Text="Item Level"
+                       Style="{StaticResource FormLabel}"/>
+                <Label Text="{Binding ItemLevel}" IsVisible="{Binding IsRead}"
+                       TextColor="Black"/>
+                <Entry Text="{Binding ItemLevel}" IsVisible="{Binding IsEdit}"
+                       Keyboard="Numeric"/>
+                <Label Text="{Binding ItemLevelError}"
+                       Style="{StaticResource ErrorLabel}"
+                       IsVisible="{Binding ItemLevelErrorIsVisible}"/>
+
+                <Label Text="Arena Rating"
+                       Style="{StaticResource FormLabel}"/>
+                <Label Text="{Binding ArenaRating}" IsVisible="{Binding IsRead}"
+                       TextColor="Black"/>
+                <Entry Text="{Binding ArenaRating}" IsVisible="{Binding IsEdit}"
+                       Keyboard="Numeric"/>
+
+                <Label Text="Battleground Rating"
+                       Style="{StaticResource FormLabel}"/>
+                <Label Text="{Binding BattlegroundRating}" IsVisible="{Binding IsRead}"
+                       TextColor="Black"/>
+                <Entry Text="{Binding BattlegroundRating}" IsVisible="{Binding IsEdit}"
+                       Keyboard="Numeric"/>
+
+                <ActivityIndicator 
+                    HorizontalOptions="Center"
+                    IsRunning="{Binding IsBusy}"
+                    VerticalOptions="Center"/>
+
+                <!--Create button group for create form-->
+                <Grid IsVisible="{Binding IsCreateForm}">
+                    <Button Text="Create"
+                            Style="{StaticResource SuccessButton}"
+                            Grid.Column="0"
+                            Command="{Binding SaveCommand}"/>
+                    <Button Text="Cancel"
+                            Style="{StaticResource CancelButton}"
+                            Grid.Column="1"
+                            Command="{Binding BackCommand}"/>
+                </Grid>
+
+                <!--Create button group to view details-->
+                <Grid IsVisible="{Binding IsRead}">
+                    <Button Text="Edit"
+                            Style="{StaticResource DefaultButton}"
+                            Grid.Column="0"
+                            Command="{Binding EditCommand}"/>
+                    <Button Text="Delete"
+                            Style="{StaticResource DangerButton}"
+                            Grid.Column="1"
+                            Command="{Binding DeleteCommand}"/>
+                </Grid>
+
+                <!--Create button group for when editing-->
+                <Grid IsVisible="{Binding IsEditForm}">
+                    <Button Text="Save"
+                            Style="{StaticResource SuccessButton}"
+                            Grid.Column="0"
+                            Command="{Binding SaveCommand}"/>
+                    <Button Text="Cancel"
+                            Style="{StaticResource CancelButton}"
+                            Grid.Column="1"
+                            Command="{Binding CancelCommand}"/>
+                </Grid>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
