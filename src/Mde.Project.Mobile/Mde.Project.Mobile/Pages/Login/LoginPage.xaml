@@ -23,19 +23,27 @@
                    TextColor="DarkCyan"
                    FontSize="50"/>
             
-            <Label Text="{Binding EmailTitle}"/>
+            <Label Text="{Binding EmailTitle}"
+                   Style="{StaticResource FormLabel}"/>
             <Entry Text="{Binding Email}"
+                   TextColor="Black"
                    Keyboard="Text"
-                   Placeholder="example@email.com"/>
+                   Placeholder="Example@email.com"/>
 
-            <Label Text="{Binding PasswordTitle}"/>
+            <Label Text="{Binding PasswordTitle}"
+                   Style="{StaticResource FormLabel}"/>
             <Entry Text="{Binding Password}"
                    Keyboard="Text" 
                    IsPassword="True"
-                   Placeholder="your password"/>
+                   Placeholder="Your password"/>
+
+            <ActivityIndicator 
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    IsRunning="{Binding IsBusy}"/>
 
             <Button Text="Login"
-                    Style="{StaticResource ButtonBase}"
+                    Style="{StaticResource SuccessButton}"
                     Command="{Binding LoginCommand}"/>
             
             <Grid HorizontalOptions="Center">
@@ -45,11 +53,13 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Column="0"
-                       Text="Not registered yet? Register"
+                       Text="Register"
+                       TextColor="Black"
                        HorizontalTextAlignment="End"/>
                 <Label Grid.Column="1"
                        Text="here"
                        FontAttributes="Bold"
+                       TextColor="Blue"
                        TextDecorations="Underline"
                        Margin="-3,0,0,0">
                     <Label.GestureRecognizers>
@@ -57,8 +67,6 @@
                     </Label.GestureRecognizers>
                 </Label>
             </Grid>
-            
-            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

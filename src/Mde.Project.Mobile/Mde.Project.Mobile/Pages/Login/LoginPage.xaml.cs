@@ -12,12 +12,12 @@ namespace Mde.Project.Mobile.Pages
         public LoginPage()
         {
             InitializeComponent();
-
             var viewModel = IoCResolver.Container.Resolve<LoginViewModel>();
-
             BindingContext = viewModel;
-
-            viewModel.RefreshCommand.ExecuteAsync();
+        }
+        protected override void OnAppearing()
+        {
+            (BindingContext as LoginViewModel).RefreshCommand.ExecuteAsync();
         }
     }
 }
