@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Mde.Project.Mobile.ViewModels
 {
@@ -17,6 +18,7 @@ namespace Mde.Project.Mobile.ViewModels
             _authService = authService;
 
             //Defaults for props
+            IsBusy = false;
             Title = "Login";
             EmailTitle = "Email";
             PasswordTitle = "Password";
@@ -51,24 +53,29 @@ namespace Mde.Project.Mobile.ViewModels
         #region Methods
         async Task LoggingIn()
         {
+            IsBusy = true;
             if(!string.IsNullOrWhiteSpace(Password) || !string.IsNullOrWhiteSpace(Email))
             {
                 var loginSuccess = await _authService.Login(Email, Password);
 
                 if (!loginSuccess)
-                    await App.Current.MainPage.DisplayAlert("Error", "Your Email or Password is incorrect.", "OK");
-            
+                {
+                    await Shell.Current.DisplayAlert("Error", "Your Email or Password is incorrect.", "OK");
+                    IsBusy = false;
+                }
                 else
                 {
                     Email = null;
                     Password = null;
-                    await AppShell.Current.GoToAsync($"//{nameof(HomePage)}");
+                    IsBusy = false;
+                    await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
                 }
                     
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("Error", "Please fill in your Email and Password.", "OK");
+                await Shell.Current.DisplayAlert("Error", "Please fill in your Email and Password.", "OK");
+                IsBusy = false;
             }
         }
 
