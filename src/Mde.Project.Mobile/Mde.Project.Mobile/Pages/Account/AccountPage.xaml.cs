@@ -24,8 +24,11 @@ namespace Mde.Project.Mobile.Pages
             var viewModel = IoCResolver.Container.Resolve<AccountViewModel>();
 
             BindingContext = viewModel;
+        }
 
-            viewModel.RefreshCommand.ExecuteAsync();
+        protected override void OnAppearing()
+        {
+            (BindingContext as AccountViewModel).RefreshCommand.ExecuteAsync();
         }
     }
 }

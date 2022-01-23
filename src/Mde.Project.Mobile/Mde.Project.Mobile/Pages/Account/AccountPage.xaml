@@ -8,8 +8,7 @@
     
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Style="{StaticResource FormLayout}"
-                         Padding="40">
+            <StackLayout Style="{StaticResource FormLayout}">
                     <Image Source="{Binding ProfilePicture}"
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="FillAndExpand"
