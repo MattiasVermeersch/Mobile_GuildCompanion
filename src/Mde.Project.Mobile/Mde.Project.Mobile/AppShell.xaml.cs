@@ -27,7 +27,10 @@ namespace Mde.Project.Mobile
             Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
             Routing.RegisterRoute(nameof(EventsPage), typeof(EventsPage));
+            Routing.RegisterRoute(nameof(PersonalEventsPage), typeof(PersonalEventsPage));
+            Routing.RegisterRoute(nameof(DetailEventPage), typeof(DetailEventPage));
             Routing.RegisterRoute(nameof(CharactersPage), typeof(CharactersPage));
+            Routing.RegisterRoute(nameof(CharacterDetailPage), typeof(CharacterDetailPage));
             Routing.RegisterRoute(nameof(AccountPage), typeof(AccountPage));
             #endregion
 
