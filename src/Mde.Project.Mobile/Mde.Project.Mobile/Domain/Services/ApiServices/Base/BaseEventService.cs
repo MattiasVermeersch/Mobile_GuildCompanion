@@ -17,5 +17,11 @@ namespace Mde.Project.Mobile.Domain.Services
             var outEntity = await ApiClient.PutAsync<T>($"{_url}/{id}/{ApiConstants.Character}", character);
             return outEntity;
         }
+
+        public async Task<T> RemoveCharacterFromInstance(string eventId, string characterId)
+        {
+            var outEntity = await ApiClient.DeleteAsync<T>($"{_url}/{eventId}/{ApiConstants.Character}/{characterId}");
+            return outEntity;
+        }
     }
 }
