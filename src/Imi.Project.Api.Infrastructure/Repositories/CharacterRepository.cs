@@ -37,6 +37,7 @@ namespace Imi.Project.Api.Infrastructure.Repositories
         {
             return await GetAllAsync()
                 .Where(c => c.UserId.Equals(id))
+                .Where(c => c.IsDeleted.Equals(false))
                 .ToListAsync();
         }
     }
