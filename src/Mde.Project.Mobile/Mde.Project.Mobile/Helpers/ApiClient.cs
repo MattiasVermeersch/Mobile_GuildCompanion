@@ -46,7 +46,7 @@ namespace Mde.Project.Mobile.Helpers
                     await SetJWTHeaderForClient(client);
                 }
 
-                var response = await client.PostAsJsonAsync(url, data);
+                var response = await client.PostAsync(url, GetDataAsStringContent(data));
                 var json = await response.Content.ReadAsStringAsync();
 
                 var result = JsonConvert.DeserializeObject<T>(json);
@@ -64,7 +64,7 @@ namespace Mde.Project.Mobile.Helpers
                     await SetJWTHeaderForClient(client);
                 }
 
-                var response = await client.PutAsJsonAsync(url, data);
+                var response = await client.PutAsync(url, GetDataAsStringContent(data));
                 var json = await response.Content.ReadAsStringAsync();
 
                 var result = JsonConvert.DeserializeObject<T>(json);
@@ -100,6 +100,11 @@ namespace Mde.Project.Mobile.Helpers
         {
             var authHeader = new AuthenticationHeaderValue("Bearer", await GetToken());
             client.DefaultRequestHeaders.Authorization = authHeader;
+        }
+
+        private static StringContent GetDataAsStringContent(object data)
+        {
+            return new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
         }
     }
 }
