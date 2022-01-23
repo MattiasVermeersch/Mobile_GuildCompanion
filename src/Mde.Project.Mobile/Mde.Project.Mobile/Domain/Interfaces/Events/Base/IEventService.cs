@@ -8,5 +8,6 @@ namespace Mde.Project.Mobile.Domain.Interfaces
         where T : EventModelBase
     {
         Task<T> AddCharacterToInstance(string id, CharacterModel character);
+        Task<T> RemoveCharacterFromInstance(string eventId, string characterId);
     }
 }
