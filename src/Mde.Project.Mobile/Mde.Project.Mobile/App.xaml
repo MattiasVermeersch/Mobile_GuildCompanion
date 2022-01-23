@@ -44,6 +44,14 @@
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
 
+            <Style x:Key="InfoLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+
+            <Style x:Key="ErrorLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Red"/>
+            </Style>
+
             <Style x:Key="ImageLabel" TargetType="Label">
                 <Setter Property="FontSize" Value="60"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
@@ -54,12 +62,24 @@
                 <Setter Property="TextColor" Value="White"/>
             </Style>
 
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="PlaceholderColor" Value="Gray"/>
+                <!--<Setter Property="BackgroundColor" Value="Lightgray"/>-->
+            </Style>
+
+            <Style TargetType="Picker">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="TitleColor" Value="Gray"/>
+            </Style>
+
             <Style x:Key="FormLayout" TargetType="StackLayout">
-                <Setter Property="Padding" Value="20"/>
+                <Setter Property="Padding" Value="30"/>
                 <Setter Property="Spacing" Value="30"/>
                 <Setter Property="Orientation" Value="Vertical"/>
                 <Setter Property="BackgroundColor" Value="GhostWhite"/>
-                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="Fill"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
             </Style>
 
             <Style x:Key="ImageBanner" TargetType="Image">
@@ -69,10 +89,29 @@
             </Style>
 
             <Style x:Key="ButtonBase" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="DarkGreen"/>
-                <Setter Property="TextColor" Value="White"/>
                 <Setter Property="CornerRadius" Value="5"/>
                 <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+
+            <Style x:Key="DefaultButton" TargetType="Button" BasedOn="{StaticResource ButtonBase}">
+                <Setter Property="BackgroundColor" Value="DarkGreen"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+
+            <Style x:Key="DangerButton" TargetType="Button" BasedOn="{StaticResource ButtonBase}">
+                <Setter Property="BackgroundColor" Value="Red"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+
+            <Style x:Key="CancelButton" TargetType="Button" BasedOn="{StaticResource ButtonBase}">
+                <Setter Property="BackgroundColor" Value="Gold"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+
+            <Style x:Key="SuccessButton" TargetType="Button" BasedOn="{StaticResource ButtonBase}">
+                <Setter Property="BackgroundColor" Value="Green"/>
+                <Setter Property="TextColor" Value="White"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>
