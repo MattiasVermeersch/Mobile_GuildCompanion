@@ -3,37 +3,69 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:Mde.Project.Mobile.ViewModels"
              xmlns:models="clr-namespace:Mde.Project.Mobile.Domain.Models"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="Mde.Project.Mobile.Pages.ArenasPage"
              x:DataType="viewmodels:ArenaViewModel"
              Title="{Binding Title}">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter"/>
+            <xct:InvertedBoolConverter x:Key="InvertBool"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <ListView 
-            SelectedItem="{Binding SelectedArena, Mode=TwoWay}"
-            HasUnevenRows="False"
-            RowHeight="45"
-            RefreshCommand="{Binding RefreshCommand}"
-            RefreshControlColor="Green"
-            IsPullToRefreshEnabled="True"
-            SeparatorColor="Green"
-            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-            ItemsSource="{Binding Arenas}">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:ArenaModel">
-                    <ViewCell>
-                        <StackLayout
-                            Padding="10, 10"
-                            Orientation="Horizontal">
-                            <Label Text="{Binding InstanceName}" 
-                                TextColor="Black"
-                                HorizontalOptions="StartAndExpand"/>
-                            <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy @ hh:mm}'}"
-                                TextColor="Black"
-                                HorizontalOptions="End"/>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <StackLayout>
+            <ListView 
+                SelectedItem="{Binding SelectedArena, Mode=TwoWay}"
+                HasUnevenRows="False"
+                RowHeight="45"
+                RefreshCommand="{Binding RefreshCommand}"
+                RefreshControlColor="Green"
+                IsPullToRefreshEnabled="True"
+                SeparatorColor="Green"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                ItemsSource="{Binding Arenas}"
+                IsVisible="{Binding HasData}">
+                <ListView.Behaviors>
+                    <xct:EventToCommandBehavior
+                                    EventName="ItemSelected"
+                                    Command="{Binding SelectedCommand}"
+                                    EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}"/>
+                </ListView.Behaviors>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:ArenaModel">
+                        <ViewCell>
+                            <StackLayout
+                                Padding="10, 10"
+                                Orientation="Horizontal">
+                                <Label Text="{Binding InstanceName}" 
+                                    TextColor="Black"
+                                    HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy @ hh:mm}'}"
+                                    TextColor="Black"
+                                    HorizontalOptions="End"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <AbsoluteLayout 
+                    Padding="0"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    IsVisible="{Binding HasData, Converter={StaticResource InvertBool}}">
+                <StackLayout 
+                        Padding="10"
+                        AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1" 
+                        AbsoluteLayout.LayoutFlags="PositionProportional">
+                    <Label Text="There are no upcoming arenas."
+                               TextColor="Black"
+                               VerticalOptions="Center"/>
+                </StackLayout>
+            </AbsoluteLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
