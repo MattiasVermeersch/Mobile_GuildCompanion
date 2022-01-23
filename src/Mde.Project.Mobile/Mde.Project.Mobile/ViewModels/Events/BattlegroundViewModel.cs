@@ -1,5 +1,7 @@
 ﻿using Mde.Project.Mobile.Domain.Interfaces;
 using Mde.Project.Mobile.Domain.Models;
+using Mde.Project.Mobile.Pages;
+using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,6 +17,8 @@ namespace Mde.Project.Mobile.ViewModels
         {
             _battlegroundService = battlegroundService;
             Title = "PvP";
+
+            SelectedCommand = new AsyncCommand<object>(Selected);
         }
 
         #region Properties
@@ -31,13 +35,23 @@ namespace Mde.Project.Mobile.ViewModels
             get => selectedBattleground;
             set
             {
-                AppShell.Current.DisplayAlert("Selected", value.Id, "OK");
                 SetProperty(ref selectedBattleground, value);
             }
+        }
+
+        private bool hasData;
+        public bool HasData
+        {
+            get => hasData;
+            set => SetProperty(ref hasData, value);
         }
         #endregion
 
         #region Commands
+        public AsyncCommand<object> SelectedCommand { get; }
+        #endregion
+
+        #region Methods
         public override async Task GetData()
         {
             IsBusy = true;
@@ -50,7 +64,24 @@ namespace Mde.Project.Mobile.ViewModels
 
         async Task GetBattlegroundsList()
         {
-            Battlegrounds = await _battlegroundService.GetAllAsync();
+            var battlegrounds = await _battlegroundService.GetAllAsync();
+
+            if(battlegrounds == null) HasData = false;
+            else
+            {
+                HasData = true;
+                Battlegrounds = battlegrounds;
+            }
+        }
+
+        private async Task Selected(object args)
+        {
+            var battleground = args as BattlegroundModel;
+
+            if (battleground is null) return;
+
+            var route = $"{nameof(DetailEventPage)}?EventId={battleground.Id}&EventType={nameof(battleground)}";
+            await Shell.Current.GoToAsync(route);
         }
         #endregion
     }

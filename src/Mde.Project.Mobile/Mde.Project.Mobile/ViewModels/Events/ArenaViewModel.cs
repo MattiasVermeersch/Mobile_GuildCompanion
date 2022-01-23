@@ -1,5 +1,7 @@
 ﻿using Mde.Project.Mobile.Domain.Interfaces;
 using Mde.Project.Mobile.Domain.Models;
+using Mde.Project.Mobile.Pages;
+using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,6 +18,8 @@ namespace Mde.Project.Mobile.ViewModels
         {
             _arenaService = arenaService;
             Title = "PvP";
+
+            SelectedCommand = new AsyncCommand<object>(Selected);
         }
 
         #region Properties
@@ -32,13 +36,23 @@ namespace Mde.Project.Mobile.ViewModels
             get => selectedArena;
             set
             {
-                AppShell.Current.DisplayAlert("Selected", value.Id, "OK");
                 SetProperty(ref selectedArena, value);
             }
+        }
+
+        private bool hasData;
+        public bool HasData
+        {
+            get => hasData;
+            set => SetProperty(ref hasData, value);
         }
         #endregion
 
         #region Commands
+        public AsyncCommand<object> SelectedCommand { get; }
+        #endregion
+
+        #region Methods
         public override async Task GetData()
         {
             IsBusy = true;
@@ -51,11 +65,28 @@ namespace Mde.Project.Mobile.ViewModels
 
         async Task GetArenasList()
         {
-            Arenas = await _arenaService.GetAllAsync();
-            foreach(var arena in Arenas)
+            var arenas = await _arenaService.GetAllAsync();
+
+            if (arenas == null) HasData = false;
+            else
             {
-                arena.InstanceName = $"{arena.Mode}v{arena.Mode}";
+                HasData = true;
+                foreach (var arena in arenas)
+                {
+                    arena.InstanceName = $"{arena.Mode}v{arena.Mode}";
+                }
+                Arenas = arenas;
             }
+        }
+
+        private async Task Selected(object args)
+        {
+            var arena = args as ArenaModel;
+
+            if (arena is null) return;
+
+            var route = $"{nameof(DetailEventPage)}?EventId={arena.Id}&EventType={nameof(arena)}";
+            await Shell.Current.GoToAsync(route);
         }
         #endregion
     }
