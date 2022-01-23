@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace Mde.Project.Mobile.Domain.Services
 {
@@ -12,13 +13,13 @@ namespace Mde.Project.Mobile.Domain.Services
         where T : class
     {
         protected string _url;
-
+        protected string _userId;
         public BaseService()
         {
             _url = ApiConstants.ApiBaseUrl;
         }
 
-        public async Task<T> AddAsync(T entity)
+        public virtual async Task<T> AddAsync(T entity)
         {
             var outEntity = await ApiClient.PostAsync<T>(_url, entity);
             return outEntity;
@@ -46,6 +47,11 @@ namespace Mde.Project.Mobile.Domain.Services
         {
             var outEntity = await ApiClient.PutAsync<T>(_url, entity);
             return outEntity;
+        }
+
+        public async Task GetStorageUserId()
+        {
+            _userId = await SecureStorage.GetAsync(ApiConstants.UserKey);
         }
     }
 }
