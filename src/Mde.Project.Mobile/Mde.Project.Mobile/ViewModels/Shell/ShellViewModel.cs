@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Mde.Project.Mobile.ViewModels
 {
@@ -25,7 +26,7 @@ namespace Mde.Project.Mobile.ViewModels
         async Task Logout()
         {
            _authService.Logout();
-            await AppShell.Current.GoToAsync($"//{nameof(LoginPage)}");
+            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
     }
 }
