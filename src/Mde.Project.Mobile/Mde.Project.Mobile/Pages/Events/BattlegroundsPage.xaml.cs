@@ -22,8 +22,11 @@ namespace Mde.Project.Mobile.Pages
             var viewModel = IoCResolver.Container.Resolve<BattlegroundViewModel>();
 
             BindingContext = viewModel;
+        }
 
-            viewModel.RefreshCommand.ExecuteAsync();
+        protected override void OnAppearing()
+        {
+            (BindingContext as BattlegroundViewModel).RefreshCommand.ExecuteAsync();
         }
     }
 }
