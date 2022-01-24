@@ -17,7 +17,6 @@ namespace Mde.Project.Mobile.ViewModels
         {
             _service = service;
             Title = "My Events";
-            SelectedCommand = new AsyncCommand<object>(Selected);
         }
         #region Properties
         private IEnumerable<EventListItemModel> events;
@@ -25,13 +24,6 @@ namespace Mde.Project.Mobile.ViewModels
         {
             get => events;
             set => SetProperty(ref events, value);
-        }
-
-        private EventListItemModel selectedEvent;
-        public EventListItemModel SelectedEvent
-        {
-            get => selectedEvent;
-            set => SetProperty(ref selectedEvent, value);
         }
 
         private bool hasData;
@@ -43,13 +35,14 @@ namespace Mde.Project.Mobile.ViewModels
         #endregion
 
         #region Commands
-        public AsyncCommand<object> SelectedCommand { get; }
         #endregion
 
         #region Methods
         public override async Task GetData()
         {
             IsBusy = true;
+
+            Events = null;
 
             await base.GetData();
             await GetEventsList();
@@ -69,15 +62,15 @@ namespace Mde.Project.Mobile.ViewModels
                 HasData = true;
             }
         }
-        private async Task Selected(object args)
-        {
-            var eventItem = args as EventListItemModel;
+        //private async Task Selected(object args)
+        //{
+        //    var eventItem = args as EventListItemModel;
 
-            if (eventItem is null) return;
+        //    if (eventItem is null) return;
 
-            var route = $"{nameof(DetailEventPage)}?EventId={eventItem.Id}&EventType={eventItem.Type}";
-            await Shell.Current.GoToAsync(route);
-        }
+        //    var route = $"{nameof(DetailEventPage)}?EventId={eventItem.Id}&EventType={eventItem.Type}";
+        //    await Shell.Current.GoToAsync(route);
+        //}
         #endregion
     }
 }
