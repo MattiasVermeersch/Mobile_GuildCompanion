@@ -14,19 +14,19 @@ namespace Imi.Project.Api.Infrastructure.Data.Seeding
                 new Arena
                 {
                     Id = Guid.Parse("00000000-0001-0000-0000-000000000000"),
-                    Date = new DateTime(2021, 02, 12),
-                    IsWon = true
+                    Date = new DateTime(2022, 02, 12),
+                    IsWon = false
                 },
                 new Arena
                 {
                     Id = Guid.Parse("00000000-0002-0000-0000-000000000000"),
-                    Date = new DateTime(2021, 02, 12),
-                    IsWon = true
+                    Date = new DateTime(2022, 02, 13),
+                    IsWon = false
                 },
                 new Arena
                 {
                     Id = Guid.Parse("00000000-0003-0000-0000-000000000000"),
-                    Date = new DateTime(2021, 02, 12),
+                    Date = new DateTime(2022, 02, 14),
                     IsWon = false
                 },
                 new Arena

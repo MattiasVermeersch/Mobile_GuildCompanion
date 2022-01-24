@@ -15,7 +15,7 @@ namespace Imi.Project.Api.Infrastructure.Data.Seeding
                 new ArenaCharacter 
                 {                         
                     ArenaId = Guid.Parse("00000000-0001-0000-0000-000000000000"), 
-                    CharacterId = Guid.Parse("00000000-0000-0000-0008-000000000000")
+                    CharacterId = Guid.Parse("00000000-0000-0000-0001-000000000000")
                 },
                 new ArenaCharacter
                 {

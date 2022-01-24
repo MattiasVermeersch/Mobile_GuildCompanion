@@ -46,7 +46,7 @@ namespace Imi.Project.Api.Infrastructure.Data.Seeding
                 {
                     //Dps 1
                     RaidId = Guid.Parse("10000000-0000-0000-0000-000000000000"),
-                    CharacterId = Guid.Parse("00000000-0000-0000-0002-000000000000")
+                    CharacterId = Guid.Parse("00000000-0000-0000-0014-000000000000")
                 },
                 new RaidCharacter
                 {
@@ -108,7 +108,7 @@ namespace Imi.Project.Api.Infrastructure.Data.Seeding
                 {
                     //Dps 1
                     RaidId = Guid.Parse("20000000-0000-0000-0000-000000000000"),
-                    CharacterId = Guid.Parse("00000000-0000-0000-0002-000000000000")
+                    CharacterId = Guid.Parse("00000000-0000-0000-0014-000000000000")
                 },
                 new RaidCharacter
                 {
@@ -170,7 +170,7 @@ namespace Imi.Project.Api.Infrastructure.Data.Seeding
                 {
                     //Dps 1
                     RaidId = Guid.Parse("30000000-0000-0000-0000-000000000000"),
-                    CharacterId = Guid.Parse("00000000-0000-0000-0002-000000000000")
+                    CharacterId = Guid.Parse("00000000-0000-0000-0014-000000000000")
                 },
                 new RaidCharacter
                 {
@@ -232,7 +232,7 @@ namespace Imi.Project.Api.Infrastructure.Data.Seeding
                 {
                     //Dps 1
                     RaidId = Guid.Parse("40000000-0000-0000-0000-000000000000"),
-                    CharacterId = Guid.Parse("00000000-0000-0000-0002-000000000000")
+                    CharacterId = Guid.Parse("00000000-0000-0000-0014-000000000000")
                 },
                 new RaidCharacter
                 {
@@ -294,7 +294,7 @@ namespace Imi.Project.Api.Infrastructure.Data.Seeding
                 {
                     //Dps 1
                     RaidId = Guid.Parse("50000000-0000-0000-0000-000000000000"),
-                    CharacterId = Guid.Parse("00000000-0000-0000-0002-000000000000")
+                    CharacterId = Guid.Parse("00000000-0000-0000-0014-000000000000")
                 },
                 new RaidCharacter
                 {

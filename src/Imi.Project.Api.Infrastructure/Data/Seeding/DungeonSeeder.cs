@@ -16,7 +16,7 @@ namespace Imi.Project.Api.Infrastructure.Data.Seeding
                     Id = Guid.Parse("00000001-0000-0000-0000-000000000000"),
                     InstanceName = "De Other Side",
                     Difficulty = "Heroic",
-                    Date = new DateTime(2021, 01, 31),
+                    Date = new DateTime(2022, 01, 26),
                     Succes = true
                 },
                 new Dungeon
@@ -24,7 +24,7 @@ namespace Imi.Project.Api.Infrastructure.Data.Seeding
                     Id = Guid.Parse("00000002-0000-0000-0000-000000000000"),
                     InstanceName = "Mists of Tirna Scithe",
                     Difficulty = "Heroic",
-                    Date = new DateTime(2021, 01, 31),
+                    Date = new DateTime(2022, 01, 31),
                     Succes = true
                 }, 
                 new Dungeon
@@ -32,7 +32,7 @@ namespace Imi.Project.Api.Infrastructure.Data.Seeding
                     Id = Guid.Parse("00000003-0000-0000-0000-000000000000"),
                     InstanceName = "The Necrotic Wake",
                     Difficulty = "Heroic",
-                    Date = new DateTime(2021, 01, 31),
+                    Date = new DateTime(2022, 02, 20),
                     Succes = true
                 },
                 new Dungeon
@@ -40,7 +40,7 @@ namespace Imi.Project.Api.Infrastructure.Data.Seeding
                     Id = Guid.Parse("00000004-0000-0000-0000-000000000000"),
                     InstanceName = "Plaguefall",
                     Difficulty = "Mythic",
-                    Date = new DateTime(2021, 01, 31),
+                    Date = new DateTime(2022, 02, 21),
                     Succes = true
                 },
                 new Dungeon
