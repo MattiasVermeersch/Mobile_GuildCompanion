@@ -22,7 +22,7 @@ namespace Mde.Project.Mobile.ViewModels
             _service = service;
             Title = "Home";
             NotificationCommand = new AsyncCommand(ShowNotification);
-            SelectedCommand = new AsyncCommand<object>(Selected);
+            NavigateCommand = new AsyncCommand(NavigateToMyEvents);
         }
 
         #region Properties
@@ -42,13 +42,6 @@ namespace Mde.Project.Mobile.ViewModels
             set => SetProperty(ref pveEvents, value);
         }
 
-        private EventListItemModel selectedEvent;
-        public EventListItemModel SelectedEvent
-        {
-            get => selectedEvent;
-            set => SetProperty(ref selectedEvent, value);
-        }
-
         private bool hasPveEvents;
         public bool HasPveEvents
         {
@@ -66,7 +59,7 @@ namespace Mde.Project.Mobile.ViewModels
 
         #region Commands
         public AsyncCommand NotificationCommand { get; }
-        public AsyncCommand<object> SelectedCommand { get; }
+        public AsyncCommand NavigateCommand { get; }
         #endregion
 
         #region Methods
@@ -74,19 +67,14 @@ namespace Mde.Project.Mobile.ViewModels
         {
             IsBusy = true;
 
+            PveEvents = null;
+            PvpEvents = null;
+
             await base.GetData();
-            await GetEventsCount();
             await GetPveEventsList();
             await GetPvpEventsList();
 
             IsBusy = false;
-        }
-
-        private async Task GetEventsCount()
-        {
-            var events = await _service.ListAllAsync();
-
-            Count = events.Count;
         }
 
         private async Task GetPveEventsList()
@@ -121,18 +109,20 @@ namespace Mde.Project.Mobile.ViewModels
             await Task.CompletedTask;
         }
 
-        private async Task Selected(object args)
-        {
-            var eventItem = args as EventListItemModel;
+        //private async Task Selected(object args)
+        //{
+        //    var eventItem = args as EventListItemModel;
 
-            if (eventItem is null) return;
+        //    if (eventItem is null) return;
 
-            var route = $"{nameof(DetailEventPage)}?EventId={eventItem.Id}&EventType={eventItem.Type}";
-            await Shell.Current.GoToAsync(route);
-        }
+        //    var route = $"{nameof(DetailEventPage)}?EventId={eventItem.Id}&EventType={eventItem.Type}";
+        //    await Shell.Current.GoToAsync(route);
+        //}
 
         async Task ShowNotification()
         {
+            Count = await _service.GetNumberOfTodaysSubscribedEvents();
+
             if (Count > 0)
             {
                 var notificator = DependencyService.Get<IToastNotificator>();
@@ -159,9 +149,14 @@ namespace Mde.Project.Mobile.ViewModels
                 var result = await notificator.Notify(options);
                 if (result.Action == NotificationAction.Clicked)
                 {
-                    await Shell.Current.GoToAsync($"{nameof(PersonalEventsPage)}");
+                    await NavigateToMyEvents();
                 }
             }
+        }
+
+        private async Task NavigateToMyEvents()
+        {
+            await Shell.Current.GoToAsync($"{nameof(PersonalEventsPage)}");
         }
         #endregion
 
