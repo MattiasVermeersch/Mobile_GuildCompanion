@@ -10,7 +10,6 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter"/>
             <xct:InvertedBoolConverter x:Key="InvertBool"/>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -18,7 +17,8 @@
     <ContentPage.Content>
         <ScrollView>
             <Grid>
-                <StackLayout>
+                <StackLayout HorizontalOptions="FillAndExpand"
+                             VerticalOptions="Fill">
                     <Grid RowSpacing="0">
                         <Image Source="pve_banner.jpg"
                                Grid.Row="0" Grid.Column="0"
@@ -29,7 +29,6 @@
                                FontFamily="{StaticResource WCFont}"/>
                     </Grid>
                     <ListView 
-                        SelectedItem="{Binding SelectedEvent, Mode=TwoWay}"
                         HasUnevenRows="False"
                         RowHeight="45"
                         RefreshCommand="{Binding RefreshCommand}"
@@ -38,17 +37,11 @@
                         SeparatorColor="Green"
                         IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                         ItemsSource="{Binding PveEvents}"
-                        IsVisible="{Binding HasPveEvents}">  
-                        <ListView.Behaviors>
-                            <xct:EventToCommandBehavior
-                                EventName="ItemSelected"
-                                Command="{Binding SelectedCommand}"
-                                EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}"/>
-                        </ListView.Behaviors>
+                        IsVisible="{Binding HasPveEvents}">
 
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="models:EventListItemModel">
-                                <ViewCell>
+                                <ViewCell IsEnabled="False">
                                     <StackLayout
                                         Padding="20, 10"
                                         Orientation="Horizontal">
@@ -88,7 +81,6 @@
                                FontFamily="{StaticResource WCFont}"/>
                     </Grid>
                     <ListView 
-                        SelectedItem="{Binding SelectedEvent, Mode=TwoWay}"
                         HasUnevenRows="False"
                         RowHeight="45"
                         RefreshCommand="{Binding RefreshCommand}"
@@ -98,16 +90,10 @@
                         IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                         ItemsSource="{Binding PvpEvents}"
                         IsVisible="{Binding HasPvpEvents}">
-                        <ListView.Behaviors>
-                            <xct:EventToCommandBehavior
-                                EventName="ItemSelected"
-                                Command="{Binding SelectedCommand}"
-                                EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}"/>
-                        </ListView.Behaviors>
 
                         <ListView.ItemTemplate>
                             <DataTemplate x:DataType="models:EventListItemModel">
-                                <ViewCell>
+                                <ViewCell IsEnabled="False">
                                     <StackLayout
                                         Padding="20, 10"
                                         Orientation="Horizontal">
