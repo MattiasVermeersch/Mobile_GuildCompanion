@@ -2,8 +2,10 @@
 <Shell  xmlns="http://xamarin.com/schemas/2014/forms"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
         xmlns:pages="clr-namespace:Mde.Project.Mobile.Pages"
+        xmlns:viewmodels="clr-namespace:Mde.Project.Mobile.ViewModels"
         xmlns:fa="clr-namespace:FontAwesome"
         x:Class="Mde.Project.Mobile.AppShell"
+        x:DataType="viewmodels:ShellViewModel"
         FlyoutBackgroundColor="White">
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
@@ -57,24 +59,6 @@
             </LinearGradientBrush>
         </Shell.FlyoutBackdrop>
         <ShellContent ContentTemplate="{DataTemplate pages:EventsPage}" Route="EventsPage"/>
-    </FlyoutItem>
-
-    <FlyoutItem Title="My Events">
-        <FlyoutItem.Icon>
-            <FontImageSource FontFamily="FAR" 
-                             Glyph="{x:Static fa:FontAwesomeIcons.CalendarAlt}" 
-                             Color="Green"/>
-        </FlyoutItem.Icon>
-        <Shell.FlyoutBackdrop>
-            <LinearGradientBrush StartPoint="0,0"
-                               EndPoint="1,1">
-                <GradientStop Color="DarkGreen"
-                            Offset="0.3" />
-                <GradientStop Color="Gold"
-                            Offset="1.0" />
-            </LinearGradientBrush>
-        </Shell.FlyoutBackdrop>
-        <ShellContent ContentTemplate="{DataTemplate pages:PersonalEventsPage}" Route="PersonalEventsPage"/>
     </FlyoutItem>
 
     <FlyoutItem Title="Characters">
