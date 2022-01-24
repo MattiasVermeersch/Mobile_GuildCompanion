@@ -63,7 +63,7 @@ namespace Mde.Project.Mobile.ViewModels
 
         async Task GetdungeonsList()
         {
-            var dungeons = await _dungeonService.GetAllAsync();
+            var dungeons = await _dungeonService.GetUpcomingEvents();
 
             if(dungeons == null) HasData = false;
             else

@@ -65,7 +65,7 @@ namespace Mde.Project.Mobile.ViewModels
 
         async Task GetRaidsList()
         {
-            var raids = await _raidService.GetAllAsync();
+            var raids = await _raidService.GetUpcomingEvents();
 
             if(raids == null) HasData = false;
             else

@@ -65,7 +65,7 @@ namespace Mde.Project.Mobile.ViewModels
 
         async Task GetArenasList()
         {
-            var arenas = await _arenaService.GetAllAsync();
+            var arenas = await _arenaService.GetUpcomingEvents();
 
             if (arenas == null) HasData = false;
             else

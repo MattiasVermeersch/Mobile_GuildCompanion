@@ -64,7 +64,7 @@ namespace Mde.Project.Mobile.ViewModels
 
         async Task GetBattlegroundsList()
         {
-            var battlegrounds = await _battlegroundService.GetAllAsync();
+            var battlegrounds = await _battlegroundService.GetUpcomingEvents();
 
             if(battlegrounds == null) HasData = false;
             else
