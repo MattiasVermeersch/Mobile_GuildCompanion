@@ -9,5 +9,6 @@ namespace Mde.Project.Mobile.Domain.Interfaces
     {
         Task<T> AddCharacterToInstance(string id, CharacterModel character);
         Task<T> RemoveCharacterFromInstance(string eventId, string characterId);
+        Task<IEnumerable<T>> GetUpcomingEvents();
     }
 }
