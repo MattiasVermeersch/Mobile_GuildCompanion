@@ -77,6 +77,11 @@ namespace Mde.Project.Mobile.Domain.Services
             throw new NotImplementedException();
         }
 
+        public Task<IEnumerable<ArenaModel>> GetUpcomingEvents()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<ArenaModel> RemoveCharacterFromInstance(string eventId, string characterId)
         {
             throw new NotImplementedException();
