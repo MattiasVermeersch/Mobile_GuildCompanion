@@ -26,12 +26,11 @@ namespace Mde.Project.Mobile.Domain.Services
             _dungeonsUrl = ApiConstants.ApiDungeonsUrl;
             _raidsUrl = ApiConstants.ApiRaidsUrl;
             _usersUrl = ApiConstants.ApiUsersUrl;
-            _eventList = new List<EventListItemModel>();
-            _pvpEventList = new List<EventListItemModel>();
-            _pveEventList = new List<EventListItemModel>();
         }
         public async Task<ICollection<EventListItemModel>> ListAllAsync()
         {
+            _eventList = new List<EventListItemModel>();
+
             await GetStorageUserId();
             var characters = await ApiClient.GetAsync<ICollection<CharacterModel>>($"{_usersUrl}/{_userId}/{ApiConstants.Characters}");
             var arenas = await ApiClient.GetAsync<ICollection<ArenaModel>>(_arenasUrl);
@@ -47,8 +46,16 @@ namespace Mde.Project.Mobile.Domain.Services
             return _eventList;
         }
 
+        public async Task<int> GetNumberOfTodaysSubscribedEvents()
+        {
+            var events = await ListAllAsync();
+            return events.Count;
+        }
+
         public async Task<ICollection<EventListItemModel>> ListAllPvpAsync()
         {
+            _pvpEventList = new List<EventListItemModel>();
+
             var arenas = await ApiClient.GetAsync<ICollection<ArenaModel>>(_arenasUrl);
             var battlegrounds = await ApiClient.GetAsync<ICollection<BattlegroundModel>>(_battlegroundsUrl);
 
@@ -60,6 +67,8 @@ namespace Mde.Project.Mobile.Domain.Services
 
         public async Task<ICollection<EventListItemModel>> ListAllPveAsync()
         {
+            _pveEventList = new List<EventListItemModel>();
+
             var dungeons = await ApiClient.GetAsync<ICollection<DungeonModel>>(_dungeonsUrl);
             var raids = await ApiClient.GetAsync<ICollection<RaidModel>>(_raidsUrl);
 
@@ -187,7 +196,8 @@ namespace Mde.Project.Mobile.Domain.Services
                     {
                         Id = arena.Id,
                         Name = $"{arena.Mode}v{arena.Mode}",
-                        Date = arena.Date
+                        Date = arena.Date,
+                        Type = nameof(arena)
                     };
 
                     _pvpEventList.Add(newEvent);
@@ -205,7 +215,8 @@ namespace Mde.Project.Mobile.Domain.Services
                     {
                         Id = battleground.Id,
                         Name = battleground.InstanceName,
-                        Date = battleground.Date
+                        Date = battleground.Date,
+                        Type = nameof(battleground)
                     };
 
                     _pvpEventList.Add(newEvent);
@@ -223,7 +234,8 @@ namespace Mde.Project.Mobile.Domain.Services
                     {
                         Id = dungeon.Id,
                         Name = dungeon.InstanceName,
-                        Date = dungeon.Date
+                        Date = dungeon.Date,
+                        Type = nameof(dungeon)
                     };
 
                     _pveEventList.Add(newEvent);
@@ -240,7 +252,8 @@ namespace Mde.Project.Mobile.Domain.Services
                     {
                         Id = raid.Id,
                         Name = raid.InstanceName,
-                        Date = raid.Date
+                        Date = raid.Date,
+                        Type = nameof(raid)
                     };
 
                     _pveEventList.Add(newEvent);
