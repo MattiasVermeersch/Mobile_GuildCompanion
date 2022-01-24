@@ -29,6 +29,7 @@ namespace Mde.Project.Mobile.ViewModels
             DeleteCommand = new AsyncCommand(OnDelete);
             EditCommand = new AsyncCommand(OnEdit);
             CancelCommand = new AsyncCommand(OnCancel);
+            BackCommand = new AsyncCommand(OnBack);
         }
 
         #region Properties
