@@ -21,48 +21,60 @@
 
                 <Label Text="Email:"
                         Style="{StaticResource FormLabel}"/>
-                <Label Text="{Binding Email}" IsVisible="{Binding IsRead}"/>
+                <Label Text="{Binding Email}" IsVisible="{Binding IsRead}"
+                       Style="{StaticResource InfoLabel}"/>
                 <Entry Text="{Binding Email}" IsVisible="{Binding IsEdit}"
+                       Style="{StaticResource }"
                        Keyboard="Text"/>
 
                 <Label Text="City:"
                         Style="{StaticResource FormLabel}"/>
-                <Label Text="{Binding City}" IsVisible="{Binding IsRead}"/>
+                <Label Text="{Binding City}" IsVisible="{Binding IsRead}"
+                       Style="{StaticResource InfoLabel}"/>
                 <Entry Text="{Binding City}" IsVisible="{Binding IsEdit}"
                        Keyboard="Text"/>
 
                 <Label Text="Date of birth:"
                         Style="{StaticResource FormLabel}"/>
-                <Label Text="{Binding BirthDate, StringFormat='{0: dd/MM/yyyy}'}" IsVisible="{Binding IsRead}"/>
+                <Label Text="{Binding BirthDate, StringFormat='{0: dd/MM/yyyy}'}" IsVisible="{Binding IsRead}"
+                       Style="{StaticResource InfoLabel}"/>
                 <DatePicker Date="{Binding BirthDate}" IsVisible="{Binding IsEdit}"/>
 
                 <Label Text="Address:"
                         Style="{StaticResource FormLabel}"/>
-                <Label Text="{Binding Address}" IsVisible="{Binding IsRead}"/>
+                <Label Text="{Binding Address}" IsVisible="{Binding IsRead}"
+                       Style="{StaticResource InfoLabel}"/>
                 <Entry Text="{Binding Address}" IsVisible="{Binding IsEdit}"
                        Keyboard="Text"/>
 
                 <Label Text="Full name:"
                         Style="{StaticResource FormLabel}"/>
-                <Label Text="{Binding FullName}" IsVisible="{Binding IsRead}"/>
+                <Label Text="{Binding FullName}" IsVisible="{Binding IsRead}"
+                       Style="{StaticResource InfoLabel}"/>
                 <Entry Text="{Binding FullName}" IsVisible="{Binding IsEdit}"
                        Keyboard="Text"/>
 
                 <Label Text="Battle.Net Id:"
                         Style="{StaticResource FormLabel}"/>
-                <Label Text="{Binding BattleNetId}" IsVisible="{Binding IsRead}"/>
+                <Label Text="{Binding BattleNetId}" IsVisible="{Binding IsRead}"
+                       Style="{StaticResource InfoLabel}"/>
                 <Entry Text="{Binding BattleNetId}" IsVisible="{Binding IsEdit}"
                        Keyboard="Text"/>
 
-                <Button Text="Edit account info" Command="{Binding EditCommand}" IsVisible="{Binding IsRead}"
+                <Button Text="Edit account info" 
+                        Style="{StaticResource DefaultButton}"
+                        Command="{Binding EditCommand}" 
+                        IsVisible="{Binding IsRead}"
                         HorizontalOptions="Center"/>
 
                 <Grid>
                     <Button Text="Save info"
                             Grid.Column="0"
+                            Style="{StaticResource SuccessButton}"
                             Command="{Binding SaveProfileCommand}" 
                             IsVisible="{Binding IsEdit}"/>
                     <Button Text="Cancel"
+                            Style="{StaticResource CancelButton}"
                             Grid.Column="1"
                             Command="{Binding CancelCommand}" 
                             IsVisible="{Binding IsEdit}"/>
