@@ -10,15 +10,13 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter"/>
             <xct:InvertedBoolConverter x:Key="InvertBool"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
         <StackLayout>
-            <ListView 
-                SelectedItem="{Binding SelectedEvent, Mode=TwoWay}"
+            <ListView
                 HasUnevenRows="False"
                 RowHeight="45"
                 RefreshCommand="{Binding RefreshCommand}"
@@ -28,16 +26,10 @@
                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                 ItemsSource="{Binding Events}"
                 IsVisible="{Binding HasData}">
-                <ListView.Behaviors>
-                    <xct:EventToCommandBehavior
-                        EventName="ItemSelected"
-                        Command="{Binding SelectedCommand}"
-                        EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}"/>
-                </ListView.Behaviors>
 
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:EventListItemModel">
-                        <ViewCell>
+                        <ViewCell IsEnabled="False">
                             <StackLayout
                                 Padding="20, 10"
                                 Orientation="Horizontal">
