@@ -9,6 +9,9 @@ namespace Mde.Project.Mobile.Domain.Constants
         //URL's
         public static string ApiBaseUrl = "http://192.168.0.152:5000/api";
 
+        //Url at school
+        //public static string ApiBaseUrl = "http://172.31.28.144:5000/api";
+
         public static string ApiLoginUrl = $"{ApiBaseUrl}/Auth/login";
         public static string ApiRegisterUrl = $"{ApiBaseUrl}/Auth/register";
 
