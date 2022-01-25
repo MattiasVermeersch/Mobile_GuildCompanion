@@ -13,14 +13,11 @@ namespace Mde.Project.Mobile.ViewModels
 {
     public class AccountViewModel : ViewModelBase
     {
-        IAccountService _accountService;
+        protected readonly IAccountService _accountService;
         public AccountViewModel(IAccountService accountService)
         {
             _accountService = accountService;
             Title = "My Account";
-
-            IsEdit = false;
-            IsRead = true;
 
             SaveProfileCommand = new AsyncCommand(SaveProfileAsync);
             TakePhotoCommand = new AsyncCommand(TakePhotoAsync);
@@ -109,6 +106,7 @@ namespace Mde.Project.Mobile.ViewModels
         #region Commands
         public async override Task GetData()
         {
+            IsRead = true;
             IsBusy = true;
 
             await base.GetData();
@@ -125,10 +123,10 @@ namespace Mde.Project.Mobile.ViewModels
 
             //await LoadPhotoAsync(photo);
 
-            if (account != null) SetProperties(account, photoPath);
+            if (account != null) await SetProperties(account, photoPath);
         }
 
-        void SetProperties(AccountModel account, string photoPath)
+        async Task SetProperties(AccountModel account, string photoPath)
         {
             Email = account.Email;
             City = account.City;
@@ -137,6 +135,7 @@ namespace Mde.Project.Mobile.ViewModels
             FullName = account.FullName;
             BattleNetId = account.BattleNetId;
             ProfilePicture = photoPath;
+            await Task.CompletedTask;
         }
         private async Task ChangeProfileState()
         {

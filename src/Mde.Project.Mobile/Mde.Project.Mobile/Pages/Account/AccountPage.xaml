@@ -9,11 +9,11 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Style="{StaticResource FormLayout}">
-                    <Image Source="{Binding ProfilePicture}"
-                           HorizontalOptions="FillAndExpand"
-                           VerticalOptions="FillAndExpand"
-                           InputTransparent="True"
-                           WidthRequest="200"/>
+                <Image Source="{Binding ProfilePicture}"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        InputTransparent="True"
+                        WidthRequest="200"/>
                 <Button Text="Take new profile pic" 
                         Command="{Binding TakePhotoCommand}"
                         HorizontalOptions="Center"
@@ -24,7 +24,6 @@
                 <Label Text="{Binding Email}" IsVisible="{Binding IsRead}"
                        Style="{StaticResource InfoLabel}"/>
                 <Entry Text="{Binding Email}" IsVisible="{Binding IsEdit}"
-                       Style="{StaticResource }"
                        Keyboard="Text"/>
 
                 <Label Text="City:"
@@ -35,10 +34,12 @@
                        Keyboard="Text"/>
 
                 <Label Text="Date of birth:"
-                        Style="{StaticResource FormLabel}"/>
+                       Style="{StaticResource FormLabel}"/>
                 <Label Text="{Binding BirthDate, StringFormat='{0: dd/MM/yyyy}'}" IsVisible="{Binding IsRead}"
                        Style="{StaticResource InfoLabel}"/>
-                <DatePicker Date="{Binding BirthDate}" IsVisible="{Binding IsEdit}"/>
+                <DatePicker Date="{Binding BirthDate}"
+                            Visual="Material"
+                            IsVisible="{Binding IsEdit}"/>
 
                 <Label Text="Address:"
                         Style="{StaticResource FormLabel}"/>
@@ -55,7 +56,7 @@
                        Keyboard="Text"/>
 
                 <Label Text="Battle.Net Id:"
-                        Style="{StaticResource FormLabel}"/>
+                       Style="{StaticResource FormLabel}"/>
                 <Label Text="{Binding BattleNetId}" IsVisible="{Binding IsRead}"
                        Style="{StaticResource InfoLabel}"/>
                 <Entry Text="{Binding BattleNetId}" IsVisible="{Binding IsEdit}"
