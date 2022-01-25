@@ -14,10 +14,15 @@
         <!-- colorAccent is used as the default value for colorControlActivated
              which is used to tint widgets -->
         <!--<item name="colorAccent">#FF4081</item>-->
+		  <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
+		  
       </style>
     <style name="MainTheme.Splash" parent ="Theme.AppCompat.Light.NoActionBar">
 	    <item name="android:windowBackground">@drawable/splash_screen</item>
 	    <item name="android:windowNoTitle">true</item>
 	    <item name="android:windowFullscreen">true</item>
     </style>
+	<style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+		<item name="colorAccent">@android:color/holo_green_dark</item>
+	</style>
 </resources>
